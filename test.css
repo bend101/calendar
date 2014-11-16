@@ -1,0 +1,49 @@
+.mainDiv{
+    position: absolute;
+    width: 100%;
+    top: 80px;
+    left: 0px;
+    bottom: 0px;
+
+
+}
+
+.headerDiv{
+    position: absolute;
+    width: 100%;
+    height: 80px;
+    top: 0px;
+    left: 0px;
+
+}
+
+.topDiv{
+    height:50px;
+}
+
+.bottomDiv{
+    height:30px;
+}
+
+.image{
+    width:1253px;
+}
+
+.dayDiv{
+    width: 14%;
+    height: 100%;
+    /*border: 1px solid black;*/
+    float: left;
+    font-size: 135%;
+    border-radius: 11px;
+    margin: 1px;
+    box-sizing: border-box;
+
+}
+
+.monthName{
+    margin: 0px auto;
+    display: block;
+    width: 100px;
+    font-size: 220%;
+}

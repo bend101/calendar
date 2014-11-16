@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html style="height:100%;">
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <script src="Calendar.js"></script>
+    <script src="DayView.js"></script>
+    <script src="HeaderView.js"></script>
+    <script src="Store.js"></script>
+    <script src="Notes.js"></script>
+    <link rel="stylesheet" type="text/css" href="calender.css"/>
+    <script>
+    window.onload = function()
+    {
+        var store=new Store();
+        store.load();
+//        var notes=new Notes();
+//        notes.noteArray.push("dads birthday dont forget!");
+//        store.putNotes(new Date("Nov 11,2014"),notes);
+//
+//        var notes1=new Notes();
+//        notes1.noteArray.push("this is today");
+//        store.putNotes(new Date("Nov 14,2014"),notes1);
+
+        var calender=new Calender(store);
+        calender.showDate(new Date());
+        document.body.appendChild(calender.getElement());
+
+    };
+    </script>
+    <title></title>
+</head>
+<body style="height:100%; padding:0px; margin:0px; overflow:hidden;">
+
+</body>
+</html>
