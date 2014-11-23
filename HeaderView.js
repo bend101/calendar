@@ -6,9 +6,9 @@ function HeaderView(calender)
 	this.calender=calender;
 
 	this.headerDiv=document.createElement("div");
-	this.headerDiv.className="headerDiv";
+	this.headerDiv.className="calender-headerDiv";
 	this.headerDiv.innerHTML=HeaderView.template;
-	this.monthSpan=this.headerDiv.querySelector(".monthName");
+	this.monthSpan=this.headerDiv.querySelector(".calender-monthName");
 	this.backArrow=this.headerDiv.querySelector(".backArrow");
 	this.forwardArrow=this.headerDiv.querySelector(".forwardArrow");
 	this.forwardArrow.addEventListener("click",this.calender.onClickRight.bind(this.calender));
@@ -34,20 +34,20 @@ HeaderView.prototype.updateMonth=function(number, year)
 	this.monthSpan.innerHTML=(HeaderView.monthNames[number]) + " " +(year+1900);
 }
 
-HeaderView.template='<div class="topDiv2">'+
+HeaderView.template='<div class="calender-topDivOfHeader">'+
 	'	<img class="backArrow" src="back%20arrow.png"></img>'+
 	'	<img class="forwardArrow" src="forward%20arrow.png"></img>'+
-	'	<span class="monthName"></span>'+
+	'	<span class="calender-monthName"></span>'+
 	'	<img class="menuButton" src="menu%20button.png"></img>'+
 
 	'</div>'+
 	''+
-	'<div class="bottomDiv2">'+
-	'	<div class="dayDiv">Sunday</div>'+
-	'	<div class="dayDiv">Monday</div>'+
-	'	<div class="dayDiv">Tuesday</div>'+
-	'	<div class="dayDiv">Wednesday</div>'+
-	'	<div class="dayDiv">Thursday</div>'+
-	'	<div class="dayDiv">Friday</div>'+
-	'	<div class="dayDiv">Saturday</div>'+
+	'<div class="calender-bottomDivOfHeader">'+
+	'	<div class="calender-dayName">Sunday</div>'+
+	'	<div class="calender-dayName">Monday</div>'+
+	'	<div class="calender-dayName">Tuesday</div>'+
+	'	<div class="calender-dayName">Wednesday</div>'+
+	'	<div class="calender-dayName">Thursday</div>'+
+	'	<div class="calender-dayName">Friday</div>'+
+	'	<div class="calender-dayName">Saturday</div>'+
 	'</div>';

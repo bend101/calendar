@@ -6,7 +6,7 @@ function DayView(calender,dayOfWeek)
 	this.date=new Date();
 	this.calender=calender;
 	this.outsideDiv=document.createElement("div");
-	this.outsideDiv.className="outsideDiv";
+	this.outsideDiv.className="calender-day-outside";
 	this.dayDiv=document.createElement("div");
 
 	this.smallDiv=document.createElement("div");
@@ -19,7 +19,7 @@ function DayView(calender,dayOfWeek)
 	this.outsideDiv.appendChild(this.dayDiv);
 	this.dayDiv.appendChild(this.smallDiv);
 
-	this.dayDiv.className="element";
+	this.dayDiv.className="calender-day-inside";
 
 	if ('ontouchstart' in window)
 	{
@@ -112,7 +112,7 @@ DayView.prototype.render=function()
 		var notesText="";
 		for (var j=0;j<notes.noteArray.length;j++)
 		{
-			notesText=notesText+"<p class='noSelect'>"+notes.noteArray[j]+"</p>";
+			notesText=notesText+"<p class='calender-noSelect'>"+notes.noteArray[j]+"</p>";
 		}
 
 		this.notesContainer=document.createElement("div");
@@ -124,15 +124,15 @@ DayView.prototype.render=function()
 	this.smallDiv.innerHTML= this.date.getDate();
 	if (this.calender.firstDayOfMonth.getMonth()!==this.date.getMonth())
 	{
-		this.dayDiv.className = "element textGrey";
+		this.dayDiv.className = "calender-day-inside calender-textGrey";
 	}
 	else
 	{
-		this.dayDiv.className = "element";
+		this.dayDiv.className = "calender-day-inside";
 	}
 	if (this.date.getDay()===0)
 	{
-		this.dayDiv.className = this.dayDiv.className + " sundayDiv";
+		this.dayDiv.className = this.dayDiv.className + " calender-nextline";
 	}
 	if (this.compareDates(this.date,this.calender.selectedDate)===true)
 	{

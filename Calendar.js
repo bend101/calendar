@@ -18,7 +18,7 @@ function Calender(store)
 
 
 	this.daysContainerDiv = document.createElement("div");
-	this.daysContainerDiv.className = "daysContainerDiv";
+	this.daysContainerDiv.className = "calender-daysContainer";
 
 	this.headerView = new HeaderView(this);
 

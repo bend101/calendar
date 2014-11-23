@@ -1,4 +1,4 @@
-.element{
+.calender-day-inside{
     width: 100%;
     height: 100%;
     border: 1px outset #BBB;
@@ -14,7 +14,7 @@
     border-radius: 7px;
 
 }
- .noSelect{
+ .calender-noSelect{
      -webkit-touch-callout: none;
      -webkit-user-select: none;
      -khtml-user-select: none;
@@ -23,10 +23,10 @@
      user-select: none;
  }
 
-.element p{
+.calender-day-inside p{
     margin: 0px;
 }
-.outsideDiv{
+.calender-day-outside{
     width: 14.28%;
     height: 16%;
     float: left;
@@ -34,7 +34,7 @@
     padding: 1px;
 }
 
-.dayDiv{
+.calender-dayName{
     width: 14%;
     height: 100%;
     float: left;
@@ -47,16 +47,16 @@
 }
 
 
-.sundayDiv{
+.calender-nextline{
     clear: left;
 }
 
-.textGrey{
+.calender-textGrey{
     color: grey;
     background-color: #EFEFEF;
 }
 
-.daysContainerDiv{
+.calender-daysContainer{
     position: absolute;
     width: 100%;
     top: 80px;
@@ -67,7 +67,7 @@
     box-sizing: border-box;
 }
 
-.headerDiv{
+.calender-headerDiv{
     position: absolute;
     width: 100%;
     height: 80px;
@@ -78,20 +78,20 @@
     box-sizing: border-box;
 }
 
-.topDiv2{
+.calender-topDivOfHeader{
     height:50px;
     text-align: center;
 }
 
-.bottomDiv2{
+.calender-bottomDivOfHeader{
     height:30px;
 }
 
-.image{
-    width:1253px;
-}
+/*.image{*/
+    /*width:1253px;*/
+/*}*/
 
-.monthName{
+.calender-monthName{
     font-size: 220%;
     text-shadow: 1px 1px #FFF;
 }
