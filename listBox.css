@@ -1,37 +1,37 @@
-.mainDiv{
-    border: 1px solid;
-    position: absolute;
-    width: 250px;
-    height: 200px;
-}
+/*.mainDiv{*/
+    /*border: 1px solid;*/
+    /*position: absolute;*/
+    /*width: 250px;*/
+    /*height: 200px;*/
+/*}*/
 
 .insideDiv{
     position: absolute;
-    border: 1px solid;
-    height: 85%;
+    /*height: 100%;*/
     box-sizing: border-box;
-    top: 25px;
-    width: 96%;
-    left: 5px;
+    top: 0px;
+    width: 99%;
+    left: 2px;
     overflow: auto;
 }
 
-.textDiv{
+.rowDiv{
     width: 100%;
-    border: 1px solid;
-    height: 25px;
+    /*border-bottom: 1px solid;*/
+    /*border-right: 1px solid;*/
+    /*height: 25px;*/
     box-sizing: border-box;
     clear: left;
     float: left;
 }
 
-.input{
-    width: 96%;
-    box-sizing: border-box;
-    left: 5px;
-    position: absolute;
-    top: 2px;
-}
+/*.input{*/
+    /*width: 96%;*/
+    /*box-sizing: border-box;*/
+    /*left: 5px;*/
+    /*position: absolute;*/
+    /*top: 2px;*/
+/*}*/
 .selected{
-    background-color: blue;
+    background-color: #BFDEFF;
 }

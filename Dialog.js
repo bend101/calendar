@@ -7,6 +7,8 @@
 
 function Dialog (title, width, height, closeListener)
 {
+	this.closeListener = closeListener;
+
 	this.dialogDiv=document.createElement("div");
 	this.dialogDiv.style.width=width+"px";
 	this.dialogDiv.style.height=height+"px";
@@ -24,11 +26,10 @@ function Dialog (title, width, height, closeListener)
 	this.dialogDiv.appendChild(this.middeDiv);
 	this.dialogDiv.appendChild(this.bottomDiv);
 
-	this.exitButton=document.createElement("img");
+	this.exitButton=document.createElement("button");
 	this.exitButton.className="exitButton";
-	this.exitButton.src="dialogExit.png";
-	this.exitButton.addEventListener("mousedown",this.onExitMouseDown.bind(this));
-	this.exitButton.addEventListener("mouseup",this.onExitMouseUp.bind(this));
+//	this.exitButton.src="dialogExit.png";
+	this.exitButton.addEventListener("click",this.onCancel.bind(this));
 
 	this.topDiv.appendChild(this.exitButton);
 	this.topDivSpan=document.createElement("span");
@@ -52,7 +53,8 @@ function Dialog (title, width, height, closeListener)
 	this.cancelButton=document.createElement("button");
 	this.okButton.innerHTML="OK";
 	this.cancelButton.innerHTML="Cancel";
-	this.cancelButton.addEventListener("mouseup",this.onCancelMouseUp.bind(this));
+	this.cancelButton.addEventListener("click",this.onCancel.bind(this));
+	this.okButton.addEventListener("click",this.onOK.bind(this));
 	this.okButton.className="okButton";
 	this.cancelButton.className="cancelButton";
 	this.bottomDiv.appendChild(this.okButton);
@@ -88,19 +90,19 @@ Dialog.prototype.onMouseUp=function(event)
 	document.body.removeEventListener("mousemove",this.mouseDownListener);
 }
 
+Dialog.OK = 0;
+Dialog.CANCEL = 1;
 
-Dialog.prototype.onExitMouseDown=function()
-{
-	this.exitButton.src="dialogExitClicked.png";
-
-}
-Dialog.prototype.onExitMouseUp=function()
+Dialog.prototype.onCancel=function()
 {
 	document.body.removeChild(this.dialogDiv);
+	this.closeListener(this, Dialog.CANCEL);
 }
 
-Dialog.prototype.onCancelMouseUp=function()
+Dialog.prototype.onOK=function()
 {
 	document.body.removeChild(this.dialogDiv);
+	this.closeListener(this, Dialog.OK);
 }
+
 

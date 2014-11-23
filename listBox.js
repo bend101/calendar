@@ -1,50 +1,85 @@
 /**
  * Created by Ben on 19/11/2014.
  */
-// add row and remove methods
-// change style white text
-// update row method
-// add keyboard
-//
 
-function ListBox (items, selectionListener)
+function ListBox (size, fnSelectionListener, fnRenderer)
 {
- 	this.mainDiv=document.createElement("div");
- 	this.inputBox=document.createElement("input");
-	this.inputBox.className="input";
+	this.size = size;
+	this.fnSelectionListener = fnSelectionListener;
+	this.fnRenderer  = fnRenderer;
+
 	this.insideDiv=document.createElement("div");
-	this.mainDiv.className="mainDiv";
 	this.insideDiv.className="insideDiv";
 
-	this.mainDiv.appendChild(this.inputBox);
-	this.mainDiv.appendChild(this.insideDiv);
 	this.selectedIndex=-1;
-	this.list=items;
-	this.divs=[];
-	for (var i=0;i<this.list.length;i++)
+	this.items=[];
+
+	for (var i=0;i<size;i++)
 	{
-		this.textDiv=document.createElement("div");
-		this.textDiv.className="textDiv";
-		this.textDiv.innerHTML=this.list[i];
-		this.textDiv.addEventListener("click",this.onClick.bind(this,i));
-		this.insideDiv.appendChild(this.textDiv);
-		this.divs.push(this.textDiv);
+		this.addRow();
 	}
 }
 
-ListBox.prototype.onClick=function(index, event)
+ListBox.prototype.onClick=function(event)
 {
+	var div=event.target;
+	for (var i=0;i<this.items.length;i++)
+	{
+		if (div===this.items[i])
+		{
+			var index=i;
+		}
+	}
 	console.log(event, index);
 	if (this.selectedIndex!==-1)
 	{
-		this.divs[this.selectedIndex].className="textDiv";
+		this.items[this.selectedIndex].className="rowDiv";
 	}
 	this.selectedIndex=index;
 	event.target.className=event.target.className+ " selected";
-	this.inputBox.value=event.target.innerHTML;
+
+	this.fnSelectionListener(this, index);
 }
 
 ListBox.prototype.getElement=function()
 {
-	return this.mainDiv;
+	return this.insideDiv;
 }
+
+ListBox.prototype.addRow=function()
+{
+	this.rowDiv=document.createElement("div");
+	this.rowDiv.className="rowDiv";
+//	console.log(this.items.length);
+	this.rowDiv.addEventListener("click",this.onClick.bind(this));
+	this.insideDiv.appendChild(this.rowDiv);
+	this.items.push(this.rowDiv);
+
+	this.fnRenderer(this.rowDiv,this.items.length-1);
+}
+
+ListBox.prototype.removeRow=function(index)
+{
+	this.insideDiv.removeChild(this.items[index]);
+	this.items.splice(index,1);
+	if(index===this.selectedIndex)
+	{
+		this.selectedIndex=-1;
+	}
+
+}
+
+ListBox.prototype.updateRow=function(index)
+{
+	this.items[index].innerHTML="";
+	this.fnRenderer(this.items[index],index);
+	this.selectedIndex=-1;
+	this.items[index].className="rowDiv";
+}
+
+ListBox.prototype.getSelectedIndex=function()
+{
+	return this.selectedIndex;
+}
+
+

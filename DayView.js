@@ -11,7 +11,9 @@ function DayView(calender,dayOfWeek)
 
 	this.smallDiv=document.createElement("div");
 	this.smallDiv.className="smallDiv";
-	this.smallDiv.addEventListener("dblclick",this.onDblClick.bind(this));
+	this.dayDiv.addEventListener("dblclick",this.onDblClick.bind(this));
+	this.dayDiv.addEventListener("touchstart",this.onTouchStart.bind(this));
+	this.dayDiv.addEventListener("touchend",this.onTouchEnd.bind(this));
 
 	this.calender.daysContainerDiv.appendChild(this.outsideDiv);
 	this.outsideDiv.appendChild(this.dayDiv);
@@ -44,41 +46,7 @@ function DayView(calender,dayOfWeek)
 DayView.prototype.setDate=function(date)
 {
 	this.date.setTime(date.getTime());
-
-	var notes=this.calender.store.getNotes(this.date);
-	if (notes !== undefined)
-	{
-		for (var i=0; i<this.dayDiv.children.length; i++)
-		{
-			if (this.dayDiv.children[i].tagName==="P")
-			{
-				this.dayDiv.removeChild(this.dayDiv.children[i]);
-			}
-		}
-		var notesText=notes.noteArray.join(", ");
-		this.spanObject=document.createElement("p");
-		this.spanObject.className="spanObject";
-
-		this.spanObject.innerHTML=notesText;
-		this.dayDiv.appendChild(this.spanObject);
-	}
-	this.smallDiv.innerHTML= this.date.getDate();
-	if (this.calender.firstDayOfMonth.getMonth()!==this.date.getMonth())
-	{
-		this.dayDiv.className = "element textGrey";
-	}
-	else
-	{
-		this.dayDiv.className = "element";
-	}
-	if (this.date.getDay()===0)
-	{
-		this.dayDiv.className = this.dayDiv.className + " sundayDiv";
-	}
-	if (this.compareDates(this.date,this.calender.selectedDate)===true)
-	{
-		this.dayDiv.className = this.dayDiv.className + " selectedDiv";
-	}
+	this.render();
 
 }
 
@@ -106,15 +74,84 @@ DayView.prototype.onClick=function()
 
 DayView.prototype.onDblClick=function()
 {
-	var notePrompt= prompt("Enter note");
 	var notes=this.calender.store.getNotes(this.date);
+	console.log(notes);
 	if (notes===undefined)
 	{
 		notes=new Notes();
-		this.calender.store.putNotes(this.date, notes);
+		console.log(notes);
 	}
-	notes.noteArray.push(notePrompt);
+	var notesDialog=new NotesDialog("Add/edit notes", 300, 324, this.onNotesDone.bind(this),notes );
 
-	this.setDate(this.date);
-	this.calender.store.save();
+}
+
+DayView.prototype.onNotesDone = function(dialog, dialogResult)
+{
+	if (dialogResult == Dialog.OK)
+	{
+		this.calender.store.putNotes(this.date, dialog.getNotes());
+		console.log("---->", dialog.getNotes(), this.calender.store.getNotes(this.date));
+		this.render();
+		this.calender.store.save();
+	}
+}
+
+DayView.prototype.render=function()
+{
+	// remove existing contents
+	if (this.notesContainer)
+	{
+		this.dayDiv.removeChild(this.notesContainer);
+		this.notesContainer = null;
+	}
+
+
+	var notes=this.calender.store.getNotes(this.date);
+	if (notes !== undefined)
+	{
+		var notesText="";
+		for (var j=0;j<notes.noteArray.length;j++)
+		{
+			notesText=notesText+"<p class='noSelect'>"+notes.noteArray[j]+"</p>";
+		}
+
+		this.notesContainer=document.createElement("div");
+		this.notesContainer.className="spanObject";
+
+		this.notesContainer.innerHTML=notesText;
+		this.dayDiv.appendChild(this.notesContainer);
+	}
+	this.smallDiv.innerHTML= this.date.getDate();
+	if (this.calender.firstDayOfMonth.getMonth()!==this.date.getMonth())
+	{
+		this.dayDiv.className = "element textGrey";
+	}
+	else
+	{
+		this.dayDiv.className = "element";
+	}
+	if (this.date.getDay()===0)
+	{
+		this.dayDiv.className = this.dayDiv.className + " sundayDiv";
+	}
+	if (this.compareDates(this.date,this.calender.selectedDate)===true)
+	{
+		this.dayDiv.className = this.dayDiv.className + " selectedDiv";
+	}
+
+}
+
+DayView.prototype.onTouchStart=function()
+{
+	this.holdTimer = setTimeout(this.onTouchHold.bind(this),1000);
+}
+
+DayView.prototype.onTouchEnd=function()
+{
+	clearTimeout(this.holdTimer);
+}
+
+DayView.prototype.onTouchHold=function()
+{
+	this.onDblClick();
 }

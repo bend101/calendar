@@ -6,12 +6,25 @@
     font-size: 135%;
     margin: 1px;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow: auto;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
     border-radius: 7px;
+
+}
+ .noSelect{
+     -webkit-touch-callout: none;
+     -webkit-user-select: none;
+     -khtml-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+     user-select: none;
+ }
+
+.element p{
+    margin: 0px;
 }
 .outsideDiv{
     width: 14.28%;
@@ -65,12 +78,12 @@
     box-sizing: border-box;
 }
 
-.topDiv{
+.topDiv2{
     height:50px;
     text-align: center;
 }
 
-.bottomDiv{
+.bottomDiv2{
     height:30px;
 }
 
@@ -157,6 +170,7 @@ width: 22px;
 .spanObject{
     font-size: 74%;
     clear:left;
+    margin-top: 19px;
 }
 
 .backArrow{

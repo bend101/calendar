@@ -34,7 +34,7 @@ HeaderView.prototype.updateMonth=function(number, year)
 	this.monthSpan.innerHTML=(HeaderView.monthNames[number]) + " " +(year+1900);
 }
 
-HeaderView.template='<div class="topDiv">'+
+HeaderView.template='<div class="topDiv2">'+
 	'	<img class="backArrow" src="back%20arrow.png"></img>'+
 	'	<img class="forwardArrow" src="forward%20arrow.png"></img>'+
 	'	<span class="monthName"></span>'+
@@ -42,7 +42,7 @@ HeaderView.template='<div class="topDiv">'+
 
 	'</div>'+
 	''+
-	'<div class="bottomDiv">'+
+	'<div class="bottomDiv2">'+
 	'	<div class="dayDiv">Sunday</div>'+
 	'	<div class="dayDiv">Monday</div>'+
 	'	<div class="dayDiv">Tuesday</div>'+
