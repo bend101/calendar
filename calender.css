@@ -123,7 +123,7 @@
 }
 
 .backgroundDiv{
-    background-image: url("background.png");
+    background-image: url("theme2background.png");
     opacity: 0.46;
     position: absolute;
     top: 0px;
@@ -172,15 +172,21 @@
 }
 
 .smallDiv{
-width: 22px;
+    width: 30px;
     position: fixed;
-    margin-right: 3px;
+    background-image: url('flower.png');
+    margin-right: 0px;
+    text-align: center;
+    color: #FFF;
+    font-size: 85%;
+    padding-top: 3px;
+    height: 25px;
 }
 
 .spanObject{
     font-size: 74%;
     clear:left;
-    margin-top: 19px;
+    margin-top: 23px;
 }
 
 .backArrow{
@@ -203,3 +209,16 @@ width: 22px;
     /*position: absolute;*/
     /*z-index: 9;*/
 /*}*/
+
+.calender-yearHeader{
+    position: absolute;
+    border: 1px solid;
+    width: 144px;
+    height: 26px;
+    top: 13px;
+    left: 347px;
+}
+
+.calender-flowerNumber{
+height:38px;
+}
