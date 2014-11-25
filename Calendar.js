@@ -15,6 +15,9 @@ function Calender(store)
 	this.backgroundDiv.className = "backgroundDiv";
 	this.foregroundDiv = document.createElement("div");
 	this.foregroundDiv.className = "foregroundDiv";
+//	this.modalDiv=document.createElement("div");
+//	this.modalDiv.className="calender-modalDiv";
+//	this.foregroundDiv.appendChild(this.modalDiv);
 
 
 	this.daysContainerDiv = document.createElement("div");

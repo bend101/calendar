@@ -1,10 +1,4 @@
-.tempImage{
-    width: 300px;
-    height: 500px;
-    float: left;
-}
-
-.notesDialog{
+.notesDialog-notesDialog{
     position: absolute;
     width: 274px;
     left: 12px;
@@ -12,13 +6,13 @@
     height: 241px;
 }
 
-.topSpan{
+.notesDialog-textAddEdit{
     left: 3px;
     top: 0px;
     position: absolute;
 }
 
-.inputBox{
+.notesDialog-inputBox{
     width: 194px;
     position: absolute;
     left: 2px;
@@ -26,7 +20,7 @@
     border-radius: 4px;
 }
 
-.addEditButton{
+.notesDialog-addEditButton{
     left: 212px;
     top: 23px;
     position: absolute;
@@ -36,11 +30,11 @@
     border: 1px none;
     width: 68px;
 }
-.addEditButton:active {
+.notesDialog-addEditButton:active {
     background-image: url('onClick.png');
 }
 
-.listDiv{
+.notesDialog-listDivBox{
     position: absolute;
     width: 197px;
     left: 4px;
@@ -52,7 +46,7 @@
     border: 2px inset #EEE;
 }
 
-.deleteButton{
+.notesDialog-deleteButton{
     position: absolute;
     left: 212px;
     top: 83px;
@@ -62,17 +56,17 @@
     box-shadow: 0px 1px 1px #888;
     border: 1px none;
 }
-.deleteButton:active {
+.notesDialog-deleteButton:active {
     background-image: url('onClick.png');
 }
 
-.bottomSpan{
+.notesDialog-textCurrentNotes{
     left: 3px;
     top: 0px;
     position: absolute;
 }
 
-.bottomDiv1{
+.notesDialog-bottomPart{
     float: left;
     clear: left;
     width: 100%;
@@ -81,7 +75,7 @@
     position: absolute;
 }
 
-.topDiv1{
+.notesDialog-topPart{
     float: left;
     clear: left;
     width: 100%;

@@ -11,26 +11,27 @@ function DayView(calender,dayOfWeek)
 
 	this.smallDiv=document.createElement("div");
 	this.smallDiv.className="smallDiv";
-	this.dayDiv.addEventListener("dblclick",this.onDblClick.bind(this));
-	this.dayDiv.addEventListener("touchstart",this.onTouchStart.bind(this));
-	this.dayDiv.addEventListener("touchend",this.onTouchEnd.bind(this));
 
 	this.calender.daysContainerDiv.appendChild(this.outsideDiv);
-	this.outsideDiv.appendChild(this.dayDiv);
-	this.dayDiv.appendChild(this.smallDiv);
-
 	this.dayDiv.className="calender-day-inside";
+	this.outsideDiv.appendChild(this.dayDiv);
+
+	this.dayDiv.appendChild(this.smallDiv);
+	this.dayReceiveClick=document.createElement("div");
+	this.dayReceiveClick.className="calender-dayReceiveClick";
+	this.outsideDiv.appendChild(this.dayReceiveClick);
+	this.dayReceiveClick.addEventListener("dblclick",this.onDblClick.bind(this));
+	this.dayReceiveClick.addEventListener("touchstart",this.onTouchStart.bind(this));
+	this.dayReceiveClick.addEventListener("touchend",this.onTouchEnd.bind(this));
 
 	if ('ontouchstart' in window)
 	{
-		this.dayDiv.addEventListener("touchstart",this.onClick.bind(this));
+		this.dayReceiveClick.addEventListener("touchstart",this.onClick.bind(this));
 	}
 	else
 	{
-		this.dayDiv.addEventListener("click",this.onClick.bind(this));
+		this.dayReceiveClick.addEventListener("click",this.onClick.bind(this));
 	}
-
-
 }
 
 //DayView.prototype.toString = function()
@@ -105,7 +106,6 @@ DayView.prototype.render=function()
 		this.notesContainer = null;
 	}
 
-
 	var notes=this.calender.store.getNotes(this.date);
 	if (notes !== undefined)
 	{
@@ -138,7 +138,6 @@ DayView.prototype.render=function()
 	{
 		this.dayDiv.className = this.dayDiv.className + " selectedDiv";
 	}
-
 }
 
 DayView.prototype.onTouchStart=function()

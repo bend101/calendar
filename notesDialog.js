@@ -8,24 +8,24 @@ function NotesDialog(title, width, height, closeListener, notes)
 	this.itemsArray=notes.noteArray.slice(0);
 
 	this.listBox=new ListBox(this.itemsArray.length,this.onSelectionChange.bind(this),this.onRender.bind(this));
-	this.middeDiv.innerHTML='   <div class="notesDialog">'+
-		'       <div class="topDiv1">'+
-		'            <span class="topSpan">Add/edit notes</span>'+
-		'            <input class="inputBox"></input>'+
-		'            <button class="addEditButton">Add</button>'+
+	this.middeDiv.innerHTML='   <div class="notesDialog-notesDialog">'+
+		'       <div class="notesDialog-topPart">'+
+		'            <span class="notesDialog-textAddEdit">Add/edit notes</span>'+
+		'            <input class="notesDialog-inputBox"></input>'+
+		'            <button class="notesDialog-addEditButton">Add</button>'+
 		'       </div>'+
-		'        <div class="bottomDiv1">'+
-		'            <span class="bottomSpan">Current notes</span>'+
-		'            <div class="listDiv"></div>'+
-		'            <button class="deleteButton">Delete</button>'+
+		'        <div class="notesDialog-bottomPart">'+
+		'            <span class="notesDialog-textCurrentNotes">Current notes</span>'+
+		'            <div class="notesDialog-listDivBox"></div>'+
+		'            <button class="notesDialog-deleteButton">Delete</button>'+
 		'        </div>'+
 		'    </div>'
-	this.listDiv=document.querySelector(".listDiv");
-	this.inputBox=document.querySelector(".inputBox");
+	this.listDiv=document.querySelector(".notesDialog-listDivBox");
+	this.inputBox=document.querySelector(".notesDialog-inputBox");
 	this.inputBox.focus();
-	this.deleteButton=document.querySelector(".deleteButton");
+	this.deleteButton=document.querySelector(".notesDialog-deleteButton");
 	this.deleteButton.addEventListener("click",this.onDeleteClick.bind(this));
-	this.addEditButton=document.querySelector(".addEditButton");
+	this.addEditButton=document.querySelector(".notesDialog-addEditButton");
 	this.addEditButton.addEventListener("click",this.onAddEditClick.bind(this));
 
 
@@ -89,8 +89,6 @@ NotesDialog.prototype.getNotes = function()
 NotesDialog.prototype.onOK=function()
 {
 	this.notes.noteArray = this.itemsArray;
-
-	document.body.removeChild(this.dialogDiv);
-	this.closeListener(this, Dialog.OK);
+	Dialog.prototype.onOK.call(this);
 }
 

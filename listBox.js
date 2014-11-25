@@ -33,7 +33,7 @@ ListBox.prototype.onClick=function(event)
 	console.log(event, index);
 	if (this.selectedIndex!==-1)
 	{
-		this.items[this.selectedIndex].className="rowDiv";
+		this.items[this.selectedIndex].className="listBox-row";
 	}
 	this.selectedIndex=index;
 	event.target.className=event.target.className+ " selected";
