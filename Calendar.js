@@ -56,7 +56,6 @@ function Calender(store)
 // so for example given 11/11/2014 show november 2014
 Calender.prototype.showDate = function(showDate)
 {
-	this.showDate1=showDate;
 	this.selectedDate= new Date(showDate.getTime());
 	// get the month from date
 	var date = new Date(showDate.getTime());
@@ -184,7 +183,7 @@ Calender.prototype.handleArrowKeys=function(event,number,keyPressed)
 	if (event.keyCode===keyPressed)
 	{
 		event.preventDefault();
-		this.showDate1.setDate(this.showDate1.getDate()+number);
-		this.showDate(this.showDate1);
+		this.selectedDate.setDate(this.selectedDate.getDate()+number);
+		this.showDate(this.selectedDate);
 	}
 }

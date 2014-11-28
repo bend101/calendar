@@ -24,14 +24,15 @@ function DayView(calender,dayOfWeek)
 	this.dayReceiveClick.addEventListener("touchstart",this.onTouchStart.bind(this));
 	this.dayReceiveClick.addEventListener("touchend",this.onTouchEnd.bind(this));
 
+	this.dayReceiveClick.addEventListener("click",this.onClick.bind(this));
 	if ('ontouchstart' in window)
 	{
 		this.dayReceiveClick.addEventListener("touchstart",this.onClick.bind(this));
 	}
-	else
-	{
-		this.dayReceiveClick.addEventListener("click",this.onClick.bind(this));
-	}
+//	else
+//	{
+//		this.dayReceiveClick.addEventListener("click",this.onClick.bind(this));
+//	}
 }
 
 //DayView.prototype.toString = function()

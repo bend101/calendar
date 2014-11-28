@@ -7,3 +7,23 @@
     top: 0px;
     box-sizing: border-box;
 }
+.dropDownBox{
+    margin-left: 45px;
+    margin-top: 25px;
+    width: 109px;
+}
+
+.spanThemes{
+    text-align: center;
+    font-size: 118%;
+    padding-left: 45px;
+    padding-top: 25px;
+}
+
+.sidebar-image{
+    width: 190px;
+}
+
+.sidebar-listofthemes{
+    position: relative;
+}
