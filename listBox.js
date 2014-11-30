@@ -22,7 +22,7 @@ function ListBox (size, fnSelectionListener, fnRenderer)
 
 ListBox.prototype.onClick=function(event)
 {
-	var div=event.target;
+	var div=event.currentTarget;
 	for (var i=0;i<this.items.length;i++)
 	{
 		if (div===this.items[i])
@@ -36,7 +36,7 @@ ListBox.prototype.onClick=function(event)
 		this.items[this.selectedIndex].className="listbox-row";
 	}
 	this.selectedIndex=index;
-	event.target.className=event.target.className+ " listbox-selected";
+	event.currentTarget.className=event.currentTarget.className+ " listbox-selected";
 
 	if (this.fnSelectionListener!== null)
 	{

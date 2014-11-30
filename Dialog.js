@@ -59,8 +59,8 @@ function Dialog (title, width, height, closeListener)
 	this.cancelButton.innerHTML="Cancel";
 	this.cancelButton.addEventListener("click",this.onCancel.bind(this));
 	this.okButton.addEventListener("click",this.onOK.bind(this));
-	this.okButton.className="dialog-okButton";
-	this.cancelButton.className="dialog-cancelButton";
+	this.okButton.className="common-button dialog-okButton";
+	this.cancelButton.className="common-button dialog-cancelButton";
 	this.bottomDiv.appendChild(this.okButton);
 	this.bottomDiv.appendChild(this.cancelButton);
 

@@ -15,6 +15,8 @@ function Calender(store)
 	this.backgroundDiv.className = "backgroundDiv";
 	this.foregroundDiv = document.createElement("div");
 	this.foregroundDiv.className = "foregroundDiv";
+	this.sidebar=new SideBar(this);
+	this.containingDiv.appendChild(this.sidebar.getElement());
 //	this.modalDiv=document.createElement("div");
 //	this.modalDiv.className="calender-modalDiv";
 //	this.foregroundDiv.appendChild(this.modalDiv);
@@ -187,3 +189,14 @@ Calender.prototype.handleArrowKeys=function(event,number,keyPressed)
 		this.showDate(this.selectedDate);
 	}
 }
+
+Calender.prototype.onSidebarShow=function()
+{
+	this.sidebar.getElement().style.right="0px";
+}
+
+Calender.prototype.onSidebarApplyClick=function()
+{
+
+}
+

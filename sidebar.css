@@ -1,29 +1,67 @@
 .sidebar-container{
     border: 1px solid;
-    width: 200px;
+    width: 220px;
     height: 100%;
     position: absolute;
-    right: 0px;
+    right: -220px;
     top: 0px;
     box-sizing: border-box;
+    display: table;
+    z-index:10;
+    transition: right 0.5s linear;
+
+
 }
 .dropDownBox{
-    margin-left: 45px;
-    margin-top: 25px;
+    margin-left: 54px;
+    margin-top: 9px;
     width: 109px;
+    margin-bottom: 8px;
 }
 
 .spanThemes{
     text-align: center;
     font-size: 118%;
-    padding-left: 45px;
-    padding-top: 25px;
+    padding-left: 76px;
 }
 
 .sidebar-image{
     width: 190px;
+    margin: 4px 4px 4px 9px;
 }
 
-.sidebar-listofthemes{
+.sidebar-listplaceholder{
     position: relative;
+    width: 96%;
+    height: 97%;
+    border: 1px outset #808080;
+    left: 4px;
+}
+
+.sidebar-dropdownboxdiv{
+display: table-row;
+}
+
+.sidebar-themestitlediv{
+    display: table-row;
+}
+
+.sidebar-listdiv{
+    display: table-row;
+    height:100%;
+}
+
+.sidebar-chooseday{
+    margin-bottom: 1px;
+    margin-left: 40px;
+}
+
+.sidebar-lastdiv{
+    display: table-row;
+}
+
+.sidebar-applybutton{
+    width: 68px;
+    margin-bottom: 8px;
+    margin-left: 140px;
 }

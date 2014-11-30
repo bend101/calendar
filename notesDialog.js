@@ -12,12 +12,12 @@ function NotesDialog(title, width, height, closeListener, notes)
 		'       <div class="notesDialog-topPart">'+
 		'            <span class="notesDialog-textAddEdit">Add/edit notes</span>'+
 		'            <input class="notesDialog-inputBox"></input>'+
-		'            <button class="notesDialog-addEditButton">Add</button>'+
+		'            <button class="common-button notesDialog-addEditButton">Add</button>'+
 		'       </div>'+
 		'        <div class="notesDialog-bottomPart">'+
 		'            <span class="notesDialog-textCurrentNotes">Current notes</span>'+
 		'            <div class="notesDialog-listDivBox"></div>'+
-		'            <button class="notesDialog-deleteButton">Delete</button>'+
+		'            <button class="common-button notesDialog-deleteButton">Delete</button>'+
 		'        </div>'+
 		'    </div>'
 	this.listDiv=document.querySelector(".notesDialog-listDivBox");

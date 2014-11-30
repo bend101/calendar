@@ -13,6 +13,8 @@ function HeaderView(calender)
 	this.yearDiv=this.headerDiv.querySelector(".calender-yearHeader");
 	this.monthNameDiv=this.headerDiv.querySelector(".calender-monthHeader");
 	this.surroundingDiv=this.headerDiv.querySelector(".calender-divSurroundingYearMonth");
+	this.menuButton=this.headerDiv.querySelector(".menuButton");
+	this.menuButton.addEventListener("click",this.calender.onSidebarShow.bind(this.calender));
 
 	this.forwardArrow.addEventListener("click",this.calender.onClickRight.bind(this.calender));
 	this.backArrow.addEventListener("click",this.calender.onClickLeft.bind(this.calender));

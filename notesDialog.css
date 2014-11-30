@@ -24,14 +24,7 @@
     left: 212px;
     top: 23px;
     position: absolute;
-    background-image: url('backgroundButton.png');
-    border-radius: 11px;
-    box-shadow: 0px 1px 1px #888;
-    border: 1px none;
     width: 68px;
-}
-.notesDialog-addEditButton:active {
-    background-image: url('onClick.png');
 }
 
 .notesDialog-listDivBox{
@@ -46,18 +39,11 @@
     border: 2px inset #EEE;
 }
 
-.notesDialog-deleteButton{
+.notesDialog-deleteButton {
     position: absolute;
     left: 212px;
     top: 83px;
     width: 68px;
-    background-image: url('backgroundButton.png');
-    border-radius: 11px;
-    box-shadow: 0px 1px 1px #888;
-    border: 1px none;
-}
-.notesDialog-deleteButton:active {
-    background-image: url('onClick.png');
 }
 
 .notesDialog-textCurrentNotes{
