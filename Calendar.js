@@ -7,6 +7,7 @@ function Calender(store)
 	this.dayArray = [];
 	this.selectedDate=null;
 	this.store=store;
+	this.theme="themeFlower";
 
 	// create the containing element
 	this.containingDiv = document.createElement("div");
@@ -20,7 +21,6 @@ function Calender(store)
 //	this.modalDiv=document.createElement("div");
 //	this.modalDiv.className="calender-modalDiv";
 //	this.foregroundDiv.appendChild(this.modalDiv);
-
 
 	this.daysContainerDiv = document.createElement("div");
 	this.daysContainerDiv.className = "calender-daysContainer";
@@ -99,7 +99,6 @@ Calender.prototype.onClickRight=function(event)
 	var nextMonth=new Date(this.firstDayOfMonth.getTime());
 	nextMonth.setMonth(this.firstDayOfMonth.getMonth()+1);
 	this.showDate(nextMonth);
-
 }
 
 Calender.prototype.onClickLeft=function(event)
@@ -151,8 +150,7 @@ Calender.prototype.onMouseMove=function(event)
 
 Calender.prototype.createLeftButton=function()
 {
-	this.leftButton=document.createElement("img");
-	this.leftButton.src="side button left.png";
+	this.leftButton=document.createElement("div");
 	this.leftButton.className="leftButton";
 	this.leftButton.style.left="-40px";
 	this.leftButton.style.cursor="pointer";
@@ -162,8 +160,7 @@ Calender.prototype.createLeftButton=function()
 
 Calender.prototype.createRightButton=function()
 {
-	this.rightButton=document.createElement("img");
-	this.rightButton.src="side button right.png";
+	this.rightButton=document.createElement("div");
 	this.rightButton.className="rightButton";
 	this.rightButton.style.right="-40px";
 	this.rightButton.style.cursor="pointer";
@@ -197,6 +194,19 @@ Calender.prototype.onSidebarShow=function()
 
 Calender.prototype.onSidebarApplyClick=function()
 {
+	var newtheme=this.sidebar.getSelectedTheme();
+	var currentTheme=this.theme;
+	this.theme=newtheme.name;
+	var themeCss=document.getElementById("theme");
+	themeCss.href=newtheme.name+".css";
+	if (newtheme!==currentTheme)
+	{
+		var currentMonth=new Date(this.firstDayOfMonth.getTime());
+		var month=currentMonth.getMonth();
+		var year=currentMonth.getYear();
+		this.headerView.updateMonth(month,year);
+	}
+	this.sidebar.getElement().style.right="-220px";
 
 }
 

@@ -49,7 +49,6 @@ DayView.prototype.setDate=function(date)
 {
 	this.date.setTime(date.getTime());
 	this.render();
-
 }
 
 DayView.prototype.compareDates=function(date1,date2)
@@ -69,7 +68,6 @@ DayView.prototype.compareDates=function(date1,date2)
 
 DayView.prototype.onClick=function()
 {
-
 	this.calender.showDate(this.date);
 	console.log(this.date);
 }
@@ -84,7 +82,6 @@ DayView.prototype.onDblClick=function()
 		console.log(notes);
 	}
 	var notesDialog=new NotesDialog("Add/edit notes", 300, 324, this.onNotesDone.bind(this),notes );
-
 }
 
 DayView.prototype.onNotesDone = function(dialog, dialogResult)

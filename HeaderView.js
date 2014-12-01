@@ -21,12 +21,8 @@ function HeaderView(calender)
 	this.forwardArrow.addEventListener("touchstart",this.calender.onClickRight.bind(this.calender));
 	this.backArrow.addEventListener("touchstart",this.calender.onClickLeft.bind(this.calender));
 
-
-
 	this.backArrow.style.cursor="pointer";
 	this.forwardArrow.style.cursor="pointer";
-
-
 }
 HeaderView.prototype.getElement=function()
 {
@@ -37,31 +33,38 @@ HeaderView.monthNames = [ "January", "February", "March", "April", "May", "June"
 	"July", "August", "September", "October", "November", "December" ];
 //HeaderView.numbers=[{image:"0.png",name:0},{image:"1.png",name:1},{image:"2.png",name:2},{image:"4.png",name:4}];
 
-
 HeaderView.prototype.updateMonth=function(number, year)
 {
-	this.yearDiv.innerHTML="";
-	this.monthNameDiv.innerHTML="";
+	if (this.calender.theme==="themeMountain")
+	{
+		this.yearDiv.innerHTML = "";
+		this.monthNameDiv.innerHTML = "";
+		this.monthNameDiv.innerHTML=HeaderView.monthNames[number];
+		this.yearDiv.innerHTML=year+1900;
+	}
+	if (this.calender.theme==="themeFlower")
+	{
+		this.yearDiv.innerHTML = "";
+		this.monthNameDiv.innerHTML = "";
 //	this.monthSpan.innerHTML=(HeaderView.monthNames[number]);
-	var year1=year+1900;
-	var year2=year1.toString();
-	this.month=HeaderView.monthNames[number];
-	for (var j=0;j<this.month.length;j++)
-	{
-		this.monthName=document.createElement("img");
-		this.monthName.className="calender-monthNameImg";
-		this.monthName.src="images/"+this.month[j]+".png";
-		this.monthNameDiv.appendChild(this.monthName);
-	}
-	for (var i=0;i<year2.length;i++)
-	{
-			this.flowerNumber=document.createElement("img");
-			this.flowerNumber.className="calender-flowerNumber";
-			this.flowerNumber.src="images/"+year2[i]+".png";
+		var year1 = year + 1900;
+		var year2 = year1.toString();
+		this.month = HeaderView.monthNames[number];
+		for (var j = 0; j < this.month.length; j++)
+		{
+			this.monthName = document.createElement("img");
+			this.monthName.className = "calender-monthNameImg";
+			this.monthName.src = "images/" + this.month[j] + ".png";
+			this.monthNameDiv.appendChild(this.monthName);
+		}
+		for (var i = 0; i < year2.length; i++)
+		{
+			this.flowerNumber = document.createElement("img");
+			this.flowerNumber.className = "calender-flowerNumber";
+			this.flowerNumber.src = "images/" + year2[i] + ".png";
 			this.yearDiv.appendChild(this.flowerNumber);
-
+		}
 	}
-
 }
 
 HeaderView.template='<div class="calender-topDivOfHeader">'+

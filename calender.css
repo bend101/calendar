@@ -124,7 +124,7 @@
 }
 
 .backgroundDiv{
-    background-image: url("theme2background.png");
+
     opacity: 0.46;
     position: absolute;
     top: 0px;
@@ -146,28 +146,6 @@
     z-index: 1;
 }
 
-.rightButton{
-    position: absolute;
-
-    top: 50%;
-    height: 80px;
-    margin-top: -40px;
-    z-index: 21;
-
-    transition: right 0.5s linear;
-}
-
-.leftButton{
-    position: absolute;
-
-    top: 50%;
-    height: 80px;
-    margin-top: -40px;
-    z-index: 21;
-
-    transition: left 0.5s linear;
-}
-
 .selectedDiv{
     background-color: #CBE8F6;
     border: 1px solid;
@@ -175,20 +153,10 @@
 }
 
 .smallDiv{
-    width: 30px;
     position: fixed;
-    background-image: url('flower.png');
-    margin-right: 0px;
-    text-align: center;
-    color: #FFF;
-    font-size: 85%;
-    padding-top: 3px;
-    height: 25px;
 }
 
 .spanObject{
-    font-size: 74%;
-    clear:left;
     margin-top: 23px;
 }
 
@@ -213,30 +181,3 @@
     /*z-index: 9;*/
 /*}*/
 
-.calender-yearHeader{
-    display: inline-block;
-}
-.calender-monthHeader{
-    display: inline-block;
-}
-
-
-.calender-middleDiv{
-    display: inline-block;
-    min-height: 1px;
-    width: 20px;
-}
-
-
-.calender-flowerNumber{
-height:42px;
-}
-
-.calender-monthNameImg{
-    height:42px;
-}
-
-.calender-divSurroundingYearMonth{
-    padding-top: 5px;
-    display: inline-block;
-}

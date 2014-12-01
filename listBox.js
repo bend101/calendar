@@ -31,17 +31,21 @@ ListBox.prototype.onClick=function(event)
 		}
 	}
 	console.log(event, index);
-	if (this.selectedIndex!==-1)
-	{
-		this.items[this.selectedIndex].className="listbox-row";
-	}
-	this.selectedIndex=index;
-	event.currentTarget.className=event.currentTarget.className+ " listbox-selected";
-
+	this.setSelectedIndex(index);
 	if (this.fnSelectionListener!== null)
 	{
 		this.fnSelectionListener(this, index);
 	}
+}
+
+ListBox.prototype.setSelectedIndex=function(index)
+{
+	if (this.selectedIndex !== -1)
+	{
+		this.items[this.selectedIndex].className = "listbox-row";
+	}
+	this.selectedIndex = index;
+	this.items[this.selectedIndex].className = this.items[this.selectedIndex].className + " listbox-selected";
 }
 
 ListBox.prototype.getElement=function()

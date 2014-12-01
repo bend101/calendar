@@ -1,0 +1,57 @@
+.backgroundDiv {
+    background-image: url("background.png");
+}
+
+.smallDiv {
+    width: 22px;
+    margin-right: 3px;
+}
+
+.spanObject {
+    margin-top: 19px;
+}
+
+.calender-yearHeader{
+    display: inline-block;
+    font-size: 220%;
+    text-shadow: 1px 1px #FFF;
+}
+.calender-monthHeader{
+    display: inline-block;
+    font-size: 220%;
+    text-shadow: 1px 1px #FFF;
+}
+.calender-middleDiv{
+    display: inline-block;
+    min-height: 1px;
+    width: 20px;
+}
+
+.leftButton{
+    background-image: url("side button left blue.png");
+    position: absolute;
+
+    top: 50%;
+    height: 80px;
+    margin-top: -40px;
+    z-index: 21;
+    width: 39px;
+
+    transition: left 0.5s linear;
+}
+.rightButton{
+    background-image: url("side button right blue.png");
+    position: absolute;
+
+    top: 50%;
+    height: 80px;
+    width: 39px;
+    margin-top: -40px;
+    z-index: 21;
+
+    transition: right 0.5s linear;
+}
+.calender-divSurroundingYearMonth{
+    padding-top: 5px;
+    display: inline-block;
+}

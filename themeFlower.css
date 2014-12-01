@@ -1,0 +1,72 @@
+.backgroundDiv {
+    background-image: url("theme2background.png");
+}
+
+.smallDiv {
+    width: 30px;
+    background-image: url('flower.png');
+    margin-right: 0px;
+    text-align: center;
+    color: #FFF;
+    font-size: 85%;
+    padding-top: 3px;
+    height: 25px;
+}
+
+.spanObject{
+    margin-top: 23px;
+}
+
+
+.calender-yearHeader{
+    display: inline-block;
+}
+.calender-monthHeader{
+    display: inline-block;
+}
+
+
+.calender-middleDiv{
+    display: inline-block;
+    min-height: 1px;
+    width: 20px;
+}
+
+
+.calender-flowerNumber{
+    height:42px;
+}
+
+.calender-monthNameImg{
+    height:42px;
+}
+
+.calender-divSurroundingYearMonth{
+    padding-top: 5px;
+    display: inline-block;
+}
+
+.leftButton{
+    background-image: url("side button left purple.png");
+    position: absolute;
+
+    top: 50%;
+    height: 80px;
+    margin-top: -40px;
+    z-index: 21;
+    width: 39px;
+
+    transition: left 0.5s linear;
+}
+.rightButton{
+    background-image: url("side button right purple.png");
+    position: absolute;
+
+    top: 50%;
+    height: 80px;
+    width: 39px;
+    margin-top: -40px;
+    z-index: 21;
+
+    transition: right 0.5s linear;
+}

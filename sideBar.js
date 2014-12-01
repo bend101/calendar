@@ -7,7 +7,7 @@ function SideBar (calender)
 	this.calender=calender;
 	var container=document.createElement("div");
 
-	this.themesArray=[ "themeImageOfMountain.png", "themeImageOfFlowers.png" ];
+	this.themesArray=[ {name:"themeMountain",image:"themeImageOfMountain.png"},{name:"themeFlower",image:"themeImageOfFlowers.png"} ];
 
 	container.innerHTML=
 		'<div class="sidebar-container">'+
@@ -36,20 +36,24 @@ function SideBar (calender)
 
 this.containingElement=container.querySelector(".sidebar-container");
 	this.listBox= new ListBox(this.themesArray.length,null,this.listRenderer.bind(this));
+	this.listBox.setSelectedIndex(0);
 	this.listOfThemes = container.querySelector(".sidebar-listplaceholder");
-	this.applyButton = container.querySelector(".common-button sidebar-applybutton");
+	this.applyButton = container.querySelector(".sidebar-applybutton");
 	this.listOfThemes.appendChild(this.listBox.getElement());
 	this.applyButton.addEventListener("click",this.calender.onSidebarApplyClick.bind(this.calender));
-
-
 }
 
 SideBar.prototype.listRenderer=function(rowDiv,index)
 {
-	rowDiv.innerHTML= "<img class='sidebar-image' src='" + this.themesArray[index] + "'/>";
+	rowDiv.innerHTML= "<img class='sidebar-image' src='" + this.themesArray[index].image + "'/>";
 }
 
 SideBar.prototype.getElement=function()
 {
 	return this.containingElement;
+}
+
+SideBar.prototype.getSelectedTheme=function()
+{
+	return this.themesArray[this.listBox.getSelectedIndex()];
 }
