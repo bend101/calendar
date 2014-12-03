@@ -13,14 +13,14 @@ function SideBar (calender)
 		'<div class="sidebar-container">'+
 			'<p class="sidebar-chooseday">First day of the week</p>'+
 			'<div class="sidebar-dropdownboxdiv">'+
-				'<select class="dropDownBox">'+
-					'<option>Sunday</option>'+
-					'<option>Monday</option>'+
-					'<option>Tuesday</option>'+
-					'<option>Wednesday</option>'+
-					'<option>Thursday</option>'+
-					'<option>Friday</option>'+
-					'<option>Saturday</option>'+
+				'<select id="dropDownBox" class="dropDownBox">'+
+					'<option value="0">Sunday</option>'+
+					'<option value="1">Monday</option>'+
+					'<option value="2">Tuesday</option>'+
+					'<option value="3">Wednesday</option>'+
+					'<option value="4">Thursday</option>'+
+					'<option value="5">Friday</option>'+
+					'<option value="6">Saturday</option>'+
 				'</select>'+
 			'</div>'+
 			'<div class="sidebar-themestitlediv">'+
@@ -39,6 +39,7 @@ this.containingElement=container.querySelector(".sidebar-container");
 	this.listBox.setSelectedIndex(0);
 	this.listOfThemes = container.querySelector(".sidebar-listplaceholder");
 	this.applyButton = container.querySelector(".sidebar-applybutton");
+	this.dropDownBox = container.querySelector(".dropDownBox");
 	this.listOfThemes.appendChild(this.listBox.getElement());
 	this.applyButton.addEventListener("click",this.calender.onSidebarApplyClick.bind(this.calender));
 }
@@ -56,4 +57,10 @@ SideBar.prototype.getElement=function()
 SideBar.prototype.getSelectedTheme=function()
 {
 	return this.themesArray[this.listBox.getSelectedIndex()];
+}
+
+SideBar.prototype.getSelectedDay=function()
+{
+	var dropDownBox=document.getElementById("dropDownBox");
+	return dropDownBox.options[dropDownBox.selectedIndex].value;
 }

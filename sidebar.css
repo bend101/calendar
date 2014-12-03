@@ -9,6 +9,7 @@
     display: table;
     z-index:10;
     transition: right 0.5s linear;
+    background-color: #52555A;
 
 
 }
@@ -23,6 +24,7 @@
     text-align: center;
     font-size: 118%;
     padding-left: 76px;
+    color: #ADAEAD;
 }
 
 .sidebar-image{
@@ -34,7 +36,7 @@
     position: relative;
     width: 96%;
     height: 97%;
-    border: 1px outset #808080;
+    2px outset rgba(150, 150, 150, 0.89);
     left: 4px;
 }
 
@@ -54,6 +56,7 @@ display: table-row;
 .sidebar-chooseday{
     margin-bottom: 1px;
     margin-left: 40px;
+    color: #ADAEAD;
 }
 
 .sidebar-lastdiv{

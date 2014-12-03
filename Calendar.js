@@ -8,6 +8,7 @@ function Calender(store)
 	this.selectedDate=null;
 	this.store=store;
 	this.theme="themeFlower";
+	this.firstDayOfWeek=0;
 
 	// create the containing element
 	this.containingDiv = document.createElement("div");
@@ -67,7 +68,7 @@ Calender.prototype.showDate = function(showDate)
 	this.firstDayOfMonth = new Date(date.getTime());
 
 	//go back to sunday
-	while (date.getDay() !== 0)
+	while (date.getDay() !== this.firstDayOfWeek)
 	{
 		date.setDate(date.getDate() - 1);
 	}
@@ -194,6 +195,8 @@ Calender.prototype.onSidebarShow=function()
 
 Calender.prototype.onSidebarApplyClick=function()
 {
+	console.log(this.sidebar.getSelectedDay());
+	this.firstDayOfWeek=parseInt(this.sidebar.getSelectedDay());
 	var newtheme=this.sidebar.getSelectedTheme();
 	var currentTheme=this.theme;
 	this.theme=newtheme.name;
@@ -207,6 +210,8 @@ Calender.prototype.onSidebarApplyClick=function()
 		this.headerView.updateMonth(month,year);
 	}
 	this.sidebar.getElement().style.right="-220px";
-
+	this.showDate(this.selectedDate);
+	this.headerView.dayToStartOn=this.firstDayOfWeek;
+	this.headerView.addDaysOfTheWeek();
 }
 

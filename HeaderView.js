@@ -14,6 +14,7 @@ function HeaderView(calender)
 	this.monthNameDiv=this.headerDiv.querySelector(".calender-monthHeader");
 	this.surroundingDiv=this.headerDiv.querySelector(".calender-divSurroundingYearMonth");
 	this.menuButton=this.headerDiv.querySelector(".menuButton");
+	this.divWhereDaysGo=this.headerDiv.querySelector(".calender-bottomDivOfHeader");
 	this.menuButton.addEventListener("click",this.calender.onSidebarShow.bind(this.calender));
 
 	this.forwardArrow.addEventListener("click",this.calender.onClickRight.bind(this.calender));
@@ -23,6 +24,11 @@ function HeaderView(calender)
 
 	this.backArrow.style.cursor="pointer";
 	this.forwardArrow.style.cursor="pointer";
+
+
+this.dayToStartOn=0;
+	this.daysArray=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+	this.addDaysOfTheWeek();
 }
 HeaderView.prototype.getElement=function()
 {
@@ -80,11 +86,26 @@ HeaderView.template='<div class="calender-topDivOfHeader">'+
 	'</div>'+
 	''+
 	'<div class="calender-bottomDivOfHeader">'+
-	'	<div class="calender-dayName">Sunday</div>'+
-	'	<div class="calender-dayName">Monday</div>'+
-	'	<div class="calender-dayName">Tuesday</div>'+
-	'	<div class="calender-dayName">Wednesday</div>'+
-	'	<div class="calender-dayName">Thursday</div>'+
-	'	<div class="calender-dayName">Friday</div>'+
-	'	<div class="calender-dayName">Saturday</div>'+
+
 	'</div>';
+
+HeaderView.prototype.addDaysOfTheWeek=function()
+{
+	this.divWhereDaysGo.innerHTML="";
+	var day=this.dayToStartOn;
+	for (var i=0;i<7;i++)
+	{
+		var dayNameDiv=document.createElement("div");
+		dayNameDiv.className="calender-dayName";
+		dayNameDiv.innerHTML=this.daysArray[day];
+		this.divWhereDaysGo.appendChild(dayNameDiv);
+		if (day<6)
+		{
+			day=day+1;
+		}
+		else
+		{
+			day=0;
+		}
+	}
+}
