@@ -22,7 +22,15 @@ Store.prototype.putNotes=function(date,notes)
 
 Store.prototype.save=function()
 {
-	var notesAsString=JSON.stringify(this.store);
+	var jsonObj = {};
+	for (var dateKey in this.store)
+	{
+		var notes = this.store[dateKey];
+		var notesJsonObj = notes.toJSON();
+		jsonObj[dateKey]= notesJsonObj;
+	}
+
+	var notesAsString=JSON.stringify(jsonObj);
 	localStorage.setItem("notes", notesAsString);
 }
 
@@ -32,6 +40,12 @@ Store.prototype.load=function()
 	console.log("json = " +returnedString);
 	if (returnedString != null)
 	{
-		this.store = JSON.parse(returnedString);
+		var jsonObj = JSON.parse(returnedString);
+		for (var dateKey in jsonObj)
+		{
+			var jsonNotes = jsonObj[dateKey];
+			var notes = Notes.fromJSON(jsonNotes);
+			this.store[dateKey] = notes;
+		}
 	}
 }
