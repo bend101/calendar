@@ -5,9 +5,9 @@ function NotesDialog(title, width, height, closeListener, notes)
 {
 	Dialog.call(this,title, width, height, closeListener);
 	this.notes = notes;
-	this.itemsArray=notes.noteArray.slice(0);
+	this.notesClone=notes.clone();
 
-	this.listBox=new ListBox(this.itemsArray.length,this.onSelectionChange.bind(this),this.onRender.bind(this));
+	this.listBox=new ListBox(this.notesClone.length(),this.onSelectionChange.bind(this),this.onListItemRender.bind(this));
 	this.middeDiv.innerHTML='   <div class="notesDialog-notesDialog">'+
 		'       <div class="notesDialog-topPart">'+
 		'            <span class="notesDialog-textAddEdit">Add/edit notes</span>'+
@@ -28,8 +28,6 @@ function NotesDialog(title, width, height, closeListener, notes)
 	this.addEditButton=document.querySelector(".notesDialog-addEditButton");
 	this.addEditButton.addEventListener("click",this.onAddEditClick.bind(this));
 
-
-	console.log(this.listDiv);
 	this.listDiv.appendChild(this.listBox.getElement());
 }
 
@@ -37,7 +35,7 @@ NotesDialog.prototype=Object.create(Dialog.prototype);
 
 NotesDialog.prototype.onSelectionChange=function(listBox,index)
 {
-	var string=this.itemsArray[index];
+	var string=this.notesClone.getNote(index);
 	this.inputBox.value=string;
 	if (this.listBox.getSelectedIndex()!==-1)
 	{
@@ -45,19 +43,18 @@ NotesDialog.prototype.onSelectionChange=function(listBox,index)
 	}
 }
 
-NotesDialog.prototype.onRender=function(div,index)
+NotesDialog.prototype.onListItemRender=function(div,index)
 {
-	div.innerHTML=this.itemsArray[index];
+	div.innerHTML=this.notesClone.getNote(index);
 }
 
 NotesDialog.prototype.onDeleteClick=function()
 {
 	var index=this.listBox.getSelectedIndex();
 	this.listBox.removeRow(index);
-	this.itemsArray.splice(index,1);
+	this.notesClone.remove(index);
 	this.inputBox.value="";
 	this.addEditButton.innerHTML="Add";
-	console.log(this.itemsArray);
 
 }
 
@@ -65,7 +62,7 @@ NotesDialog.prototype.onAddEditClick=function()
 {
 	if (this.listBox.getSelectedIndex()!==-1)
 	{
-		this.itemsArray[this.listBox.getSelectedIndex()]=this.inputBox.value;
+		this.notesClone.update(this.listBox.getSelectedIndex(),this.inputBox.value);
 		this.listBox.updateRow(this.listBox.getSelectedIndex());
 		this.inputBox.value="";
 		this.addEditButton.innerHTML="Add";
@@ -74,7 +71,7 @@ NotesDialog.prototype.onAddEditClick=function()
 	{
 		if(this.inputBox.value.trim()!=="")
 		{
-			this.itemsArray.push(this.inputBox.value);
+			this.notesClone.add(this.inputBox.value);
 			this.listBox.addRow();
 			this.inputBox.value = "";
 		}
@@ -88,7 +85,7 @@ NotesDialog.prototype.getNotes = function()
 
 NotesDialog.prototype.onOK=function()
 {
-	this.notes.noteArray = this.itemsArray;
+	this.notes.copyFrom(this.notesClone);
 	Dialog.prototype.onOK.call(this);
 }
 

@@ -108,9 +108,9 @@ DayView.prototype.render=function()
 	if (notes !== undefined)
 	{
 		var notesText="";
-		for (var j=0;j<notes.noteArray.length;j++)
+		for (var j=0;j<notes.length();j++)
 		{
-			notesText=notesText+"<p class='calender-noSelect'>"+notes.noteArray[j]+"</p>";
+			notesText=notesText+"<p class='calender-noSelect'>"+notes.getNote(j)+"</p>";
 		}
 
 		this.notesContainer=document.createElement("div");
