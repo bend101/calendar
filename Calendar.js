@@ -6,9 +6,13 @@ function Calender(store)
 	this.firstDayOfMonth = null;
 	this.dayArray = [];
 	this.selectedDate=null;
-	this.store=store;
+	this.dateToNotesMap=store;
 	this.theme="themeFlower";
 	this.firstDayOfWeek=0;
+
+	document.ontouchmove = function(event){
+		event.preventDefault();
+	};
 
 	// create the containing element
 	this.containingDiv = document.createElement("div");
@@ -81,6 +85,7 @@ Calender.prototype.showDate = function(showDate)
 	}
 
 	// update the header with the name of the month
+
 	this.headerView.updateMonth(this.firstDayOfMonth.getMonth(), this.firstDayOfMonth.getYear());
 }
 

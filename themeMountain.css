@@ -1,5 +1,5 @@
 .backgroundDiv {
-    background-image: url("background.png");
+    background-image: url("otherImages/background.png");
 }
 
 .smallDiv {
@@ -28,7 +28,7 @@
 }
 
 .leftButton{
-    background-image: url("side button left blue.png");
+    background-image: url("otherImages/side button left blue.png");
     position: absolute;
 
     top: 50%;
@@ -36,11 +36,11 @@
     margin-top: -40px;
     z-index: 21;
     width: 39px;
-
+    -webkit-transition: left 0.5s linear;
     transition: left 0.5s linear;
 }
 .rightButton{
-    background-image: url("side button right blue.png");
+    background-image: url("otherImages/side button right blue.png");
     position: absolute;
 
     top: 50%;
@@ -48,7 +48,7 @@
     width: 39px;
     margin-top: -40px;
     z-index: 21;
-
+    -webkit-transition: right 0.5s linear;
     transition: right 0.5s linear;
 }
 .calender-divSurroundingYearMonth{

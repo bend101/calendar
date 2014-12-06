@@ -1,10 +1,10 @@
 .backgroundDiv {
-    background-image: url("theme2background.png");
+    background-image: url("otherImages/theme2background.png");
 }
 
 .smallDiv {
     width: 30px;
-    background-image: url('flower.png');
+    background-image: url('otherImages/flower.png');
     margin-right: 0px;
     text-align: center;
     color: #FFF;
@@ -47,7 +47,7 @@
 }
 
 .leftButton{
-    background-image: url("side button left purple.png");
+    background-image: url("otherImages/side button left purple.png");
     position: absolute;
 
     top: 50%;
@@ -55,11 +55,11 @@
     margin-top: -40px;
     z-index: 21;
     width: 39px;
-
+    -webkit-transition: left 0.5s linear;
     transition: left 0.5s linear;
 }
 .rightButton{
-    background-image: url("side button right purple.png");
+    background-image: url("otherImages/side button right purple.png");
     position: absolute;
 
     top: 50%;
@@ -67,7 +67,7 @@
     width: 39px;
     margin-top: -40px;
     z-index: 21;
-
+    -webkit-transition: right 0.5s linear;
     transition: right 0.5s linear;
 }
 

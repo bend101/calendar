@@ -2,6 +2,8 @@
 <html style="height:100%;">
 <head lang="en">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
 
     <script src="Calendar.js"></script>
     <script src="DayView.js"></script>
@@ -26,11 +28,11 @@
         store.load();
 //        var notes=new Notes();
 //        notes._noteArray.push("dads birthday dont forget!");
-//        store.putNotes(new Date("Nov 11,2014"),notes);
+//        dateToNotesMap.putNotes(new Date("Nov 11,2014"),notes);
 //
 //        var notes1=new Notes();
 //        notes1._noteArray.push("this is today");
-//        store.putNotes(new Date("Nov 14,2014"),notes1);
+//        dateToNotesMap.putNotes(new Date("Nov 14,2014"),notes1);
 
         var calender=new Calender(store);
         calender.showDate(new Date());

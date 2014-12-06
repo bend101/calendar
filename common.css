@@ -1,10 +1,10 @@
 .common-button{
-    background-image: url("backgroundButton.png");
+    background-image: url("otherImages/backgroundButton.png");
     border-radius: 11px;
     box-shadow: 0px 2px 3px #888;
     border: 1px;
     /*height:20px;*/
 }
 .common-button:active {
-    background-image: url('onClick.png');
+    background-image: url('otherImages/onClick.png');
 }

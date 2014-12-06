@@ -43,14 +43,3 @@ Notes.prototype.update=function(index,newItem)
 	this._noteArray[index]=newItem;
 }
 
-Notes.prototype.toJSON=function()
-{
-	return {items:this._noteArray};
-}
-
-Notes.fromJSON=function(json)
-{
-	var newNotes = new Notes();
-	newNotes._noteArray = json.items;
-	return newNotes;
-}

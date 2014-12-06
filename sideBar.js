@@ -7,7 +7,7 @@ function SideBar (calender)
 	this.calender=calender;
 	var container=document.createElement("div");
 
-	this.themesArray=[ {name:"themeMountain",image:"themeImageOfMountain.png"},{name:"themeFlower",image:"themeImageOfFlowers.png"} ];
+	this.themesArray=[ {name:"themeMountain",image:"otherImages/themeImageOfMountain.png"},{name:"themeFlower",image:"otherImages/themeImageOfFlowers.png"} ];
 
 	container.innerHTML=
 		'<div class="sidebar-container">'+

@@ -20,19 +20,21 @@ function DayView(calender,dayOfWeek)
 	this.dayReceiveClick=document.createElement("div");
 	this.dayReceiveClick.className="calender-dayReceiveClick";
 	this.outsideDiv.appendChild(this.dayReceiveClick);
-	this.dayReceiveClick.addEventListener("dblclick",this.onDblClick.bind(this));
-	this.dayReceiveClick.addEventListener("touchstart",this.onTouchStart.bind(this));
-	this.dayReceiveClick.addEventListener("touchend",this.onTouchEnd.bind(this));
 
-	this.dayReceiveClick.addEventListener("click",this.onClick.bind(this));
+
+
+//	this.dayReceiveClick.addEventListener("click",this.onClick.bind(this));
 	if ('ontouchstart' in window)
 	{
 		this.dayReceiveClick.addEventListener("touchstart",this.onClick.bind(this));
+		this.dayReceiveClick.addEventListener("touchstart",this.onTouchStart.bind(this));
+		this.dayReceiveClick.addEventListener("touchend",this.onTouchEnd.bind(this));
 	}
-//	else
-//	{
-//		this.dayReceiveClick.addEventListener("click",this.onClick.bind(this));
-//	}
+	else
+	{
+		this.dayReceiveClick.addEventListener("click",this.onClick.bind(this));
+		this.dayReceiveClick.addEventListener("dblclick",this.onDblClick.bind(this));
+	}
 }
 
 //DayView.prototype.toString = function()
@@ -74,7 +76,7 @@ DayView.prototype.onClick=function()
 
 DayView.prototype.onDblClick=function()
 {
-	var notes=this.calender.store.getNotes(this.date);
+	var notes=this.calender.dateToNotesMap.getNotes(this.date);
 	console.log(notes);
 	if (notes===undefined)
 	{
@@ -88,10 +90,10 @@ DayView.prototype.onNotesDone = function(dialog, dialogResult)
 {
 	if (dialogResult == Dialog.OK)
 	{
-		this.calender.store.putNotes(this.date, dialog.getNotes());
-		console.log("---->", dialog.getNotes(), this.calender.store.getNotes(this.date));
+		this.calender.dateToNotesMap.putNotes(this.date, dialog.getNotes());
+		console.log("---->", dialog.getNotes(), this.calender.dateToNotesMap.getNotes(this.date));
 		this.render();
-		this.calender.store.save();
+		this.calender.dateToNotesMap.save();
 	}
 }
 
@@ -104,7 +106,7 @@ DayView.prototype.render=function()
 		this.notesContainer = null;
 	}
 
-	var notes=this.calender.store.getNotes(this.date);
+	var notes=this.calender.dateToNotesMap.getNotes(this.date);
 	if (notes !== undefined)
 	{
 		var notesText="";
