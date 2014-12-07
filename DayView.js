@@ -20,7 +20,8 @@ function DayView(calender,dayOfWeek)
 	this.dayReceiveClick=document.createElement("div");
 	this.dayReceiveClick.className="calender-dayReceiveClick";
 	this.outsideDiv.appendChild(this.dayReceiveClick);
-
+	this.dayReceiveClick.addEventListener("click",this.onClick.bind(this));
+	this.dayReceiveClick.addEventListener("dblclick",this.onDblClick.bind(this));
 
 
 //	this.dayReceiveClick.addEventListener("click",this.onClick.bind(this));
@@ -32,8 +33,8 @@ function DayView(calender,dayOfWeek)
 	}
 	else
 	{
-		this.dayReceiveClick.addEventListener("click",this.onClick.bind(this));
-		this.dayReceiveClick.addEventListener("dblclick",this.onDblClick.bind(this));
+//		this.dayReceiveClick.addEventListener("click",this.onClick.bind(this));
+//		this.dayReceiveClick.addEventListener("dblclick",this.onDblClick.bind(this));
 	}
 }
 
@@ -76,11 +77,11 @@ DayView.prototype.onClick=function()
 
 DayView.prototype.onDblClick=function()
 {
-	var notes=this.calender.dateToNotesMap.getNotes(this.date);
+	var notes=this.calender.dateToDayMap.getNotes(this.date);
 	console.log(notes);
 	if (notes===undefined)
 	{
-		notes=new Notes();
+		notes=new Day();
 		console.log(notes);
 	}
 	var notesDialog=new NotesDialog("Add/edit notes", 300, 324, this.onNotesDone.bind(this),notes );
@@ -90,10 +91,10 @@ DayView.prototype.onNotesDone = function(dialog, dialogResult)
 {
 	if (dialogResult == Dialog.OK)
 	{
-		this.calender.dateToNotesMap.putNotes(this.date, dialog.getNotes());
-		console.log("---->", dialog.getNotes(), this.calender.dateToNotesMap.getNotes(this.date));
+		this.calender.dateToDayMap.putNotes(this.date, dialog.getNotes());
+		console.log("---->", dialog.getNotes(), this.calender.dateToDayMap.getNotes(this.date));
 		this.render();
-		this.calender.dateToNotesMap.save();
+		this.calender.dateToDayMap.save();
 	}
 }
 
@@ -106,13 +107,13 @@ DayView.prototype.render=function()
 		this.notesContainer = null;
 	}
 
-	var notes=this.calender.dateToNotesMap.getNotes(this.date);
+	var notes=this.calender.dateToDayMap.getNotes(this.date);
 	if (notes !== undefined)
 	{
 		var notesText="";
 		for (var j=0;j<notes.length();j++)
 		{
-			notesText=notesText+"<p class='calender-noSelect'>"+notes.getNote(j)+"</p>";
+			notesText=notesText+"<p class='calender-noSelect'>"+notes.getNoteText(j)+"</p>";
 		}
 
 		this.notesContainer=document.createElement("div");

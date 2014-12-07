@@ -5,7 +5,8 @@ function Store()
 {
 	this.theme = "themeFlower";
 	this.firstDayOfWeek = 0;
-	this.dateToNotesMap={};
+	this.dateToDayMap={};
+	this.user="";
 }
 Store.prototype.getKey=function(date)
 {
@@ -14,24 +15,25 @@ Store.prototype.getKey=function(date)
 
 Store.prototype.getNotes=function(date)
 {
-	return this.dateToNotesMap[this.getKey(date)];
+	return this.dateToDayMap[this.getKey(date)];
 }
 Store.prototype.putNotes=function(date,notes)
 {
-	this.dateToNotesMap[this.getKey(date)] = notes;
+	this.dateToDayMap[this.getKey(date)] = notes;
 
 }
 
 Store.prototype.save=function()
 {
-	var saveObj = {};
+	var saveObj = 	{};
 	saveObj.Theme = this.theme;
 	saveObj.FirstDayOfWeek = this.firstDayOfWeek;
 	saveObj.Notes = {};
+	saveObj.TimeStamp = (new Date()).getTime();
 
-	for (var dateKey in this.dateToNotesMap)
+	for (var dateKey in this.dateToDayMap)
 	{
-		var notes = this.dateToNotesMap[dateKey];
+		var notes = this.dateToDayMap[dateKey];
 
 		saveObj.Notes[dateKey] = [];
 
@@ -42,7 +44,21 @@ Store.prototype.save=function()
 	}
 
 	var saveObjAsString=JSON.stringify(saveObj);
-	localStorage.setItem("notes", saveObjAsString);
+	if (window.location.search==="")
+	{
+		localStorage.setItem("notes", saveObjAsString);
+	}
+	else
+	{
+		var queryString=window.location.search.substring(1);
+		var pieces=queryString.split("=");
+		if (pieces[0]==="name")
+		{
+			localStorage.setItem(pieces[1]+"_notes", saveObjAsString);
+			this.user=pieces[1];
+		}
+	}
+
 }
 
 Store.prototype.load=function()
@@ -60,12 +76,12 @@ Store.prototype.load=function()
 		for (var dateKey in loadObj.Notes)
 		{
 			var lines = loadObj.Notes[dateKey];
-			var notes = new Notes();
+			var notes = new Day();
 			for (var i=0; i<lines.length; i++)
 			{
 				notes.add(lines[i]);
 			}
-			this.dateToNotesMap[dateKey] = notes;
+			this.dateToDayMap[dateKey] = notes;
 		}
 	}
 }

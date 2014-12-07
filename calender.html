@@ -9,11 +9,12 @@
     <script src="DayView.js"></script>
     <script src="HeaderView.js"></script>
     <script src="Store.js"></script>
-    <script src="Notes.js"></script>
+    <script src="Day.js"></script>
     <script src="Dialog.js"></script>
     <script src="notesDialog.js"></script>
     <script src="listBox.js"></script>
     <script src="sideBar.js"></script>
+    <script src="Note.js"></script>
     <link rel="stylesheet" type="text/css" href="dialog.css"/>
     <link rel="stylesheet" type="text/css" href="notesDialog.css"/>
     <link rel="stylesheet" type="text/css" href="listBox.css"/>
@@ -26,13 +27,13 @@
     {
         var store=new Store();
         store.load();
-//        var notes=new Notes();
+//        var notes=new Day();
 //        notes._noteArray.push("dads birthday dont forget!");
-//        dateToNotesMap.putNotes(new Date("Nov 11,2014"),notes);
+//        dateToDayMap.putNotes(new Date("Nov 11,2014"),notes);
 //
-//        var notes1=new Notes();
+//        var notes1=new Day();
 //        notes1._noteArray.push("this is today");
-//        dateToNotesMap.putNotes(new Date("Nov 14,2014"),notes1);
+//        dateToDayMap.putNotes(new Date("Nov 14,2014"),notes1);
 
         var calender=new Calender(store);
         calender.showDate(new Date());

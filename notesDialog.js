@@ -35,7 +35,7 @@ NotesDialog.prototype=Object.create(Dialog.prototype);
 
 NotesDialog.prototype.onSelectionChange=function(listBox,index)
 {
-	var string=this.notesClone.getNote(index);
+	var string=this.notesClone.getNoteText(index);
 	this.inputBox.value=string;
 	if (this.listBox.getSelectedIndex()!==-1)
 	{
@@ -45,7 +45,7 @@ NotesDialog.prototype.onSelectionChange=function(listBox,index)
 
 NotesDialog.prototype.onListItemRender=function(div,index)
 {
-	div.innerHTML=this.notesClone.getNote(index);
+	div.innerHTML=this.notesClone.getNoteText(index);
 }
 
 NotesDialog.prototype.onDeleteClick=function()
