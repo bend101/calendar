@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="Day.js"></script>
+    <script src="Note.js"></script>
+    <script>
+
+        test0("check save look right");
+        test1("check load look right");
+
+
+        function test0(name)
+        {
+            var day = new Day();
+            day.add("hello");
+            day.add("hello1");
+            day.add("hello2232");
+            day.remove(0);
+            day.remove(1);
+            var savedDay=day.save();
+            console.log(savedDay);
+
+            checkTrue(day._noteArray.length === 1);
+        }
+
+        function test1(name)
+        {
+            var day = new Day();
+            day.add("hello");
+            day.add("hello1");
+            day.add("hello2232");
+            day.remove(0);
+            day.remove(1);
+            var savedDay=day.save();
+            console.log(savedDay);
+
+            var newDay = Day.load(savedDay);
+            console.log(newDay);
+        }
+
+
+
+
+        function checkTrue(value)
+        {
+            if(value===false)
+            {
+                console.error("FAILED!");
+            }
+            else
+            {
+                console.log("PASSED");
+            }
+        }
+
+        function compare(name, actual,expectedToString)
+        {
+            if (actual!== expectedToString)
+            {
+                console.error(name + " FAILED!");
+                console.error("was: " + actual + " expected: " + expectedToString);
+            }
+            else
+            {
+                console.log(name + " PASSED!");
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>
