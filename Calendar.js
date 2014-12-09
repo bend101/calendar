@@ -6,7 +6,7 @@ function Calender(store)
 	this.firstDayOfMonth = null;
 	this.dayArray = [];
 	this.selectedDate=null;
-	this.dateToDayMap=store;
+	this.store=store;
 	this.theme="themeFlower";
 	this.firstDayOfWeek=0;
 

@@ -7,17 +7,18 @@
     <script src="Note.js"></script>
     <script>
 
-        test1("update use 1");
-        test2("update use 2");
-        test3("update multiple");
-        test4("different notes in each");
-        test0("both the same");
+//        test1("update use 1");
+//        test2("update use 2");
+//        test3("update multiple");
+//        test4("different notes in each");
+//        test0("both the same");
+test5("deleted merging");
 
         function test0(name)
         {
             var d1 =Day.createTestDay(
                     [
-                        [1,"abc",1]
+                        [1,"abc",1],
                     ]);
             var d2 =Day.createTestDay(
                     [
@@ -93,6 +94,31 @@
 
             var merged = Day.merge(d1, d2);
             compare(name, merged,"[1,a,1],[2,b,1],");
+        }
+
+
+        function test5 (name)
+        {
+            var d1 =Day.createTestDay(
+                    [
+                        [1,"a",1],
+                        [3,"b",1],
+                        [5,"c",1],
+                        [2,"*deleted*",1],
+                        [4,"*deleted*",1],
+
+                    ]);
+            var d2 =Day.createTestDay(
+                    [
+
+                        [3,"*deleted*",2],
+                        [2,"d",1],
+                        [4,"e",1],
+
+                    ]);
+
+            var merged = Day.merge(d1, d2);
+            compare(name, merged,"[1,a,1],[5,c,1],");
         }
 
         function compare(name, merged,expectedToString)

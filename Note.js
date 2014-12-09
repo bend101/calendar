@@ -1,4 +1,4 @@
-function Note (note,id, timeStamp)
+function Note (note, id, timeStamp)
 {
 	this.note=note;
 	this.id=id;

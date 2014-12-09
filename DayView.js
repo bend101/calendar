@@ -77,7 +77,7 @@ DayView.prototype.onClick=function()
 
 DayView.prototype.onDblClick=function()
 {
-	var notes=this.calender.dateToDayMap.getNotes(this.date);
+	var notes=this.calender.store.getNotes(this.date);
 	console.log(notes);
 	if (notes===undefined)
 	{
@@ -91,10 +91,10 @@ DayView.prototype.onNotesDone = function(dialog, dialogResult)
 {
 	if (dialogResult == Dialog.OK)
 	{
-		this.calender.dateToDayMap.putNotes(this.date, dialog.getNotes());
-		console.log("---->", dialog.getNotes(), this.calender.dateToDayMap.getNotes(this.date));
+		this.calender.store.putNotes(this.date, dialog.getNotes());
+		console.log("---->", dialog.getNotes(), this.calender.store.getNotes(this.date));
 		this.render();
-		this.calender.dateToDayMap.save();
+		this.calender.store.saveToLocalStorage();
 	}
 }
 
@@ -107,7 +107,7 @@ DayView.prototype.render=function()
 		this.notesContainer = null;
 	}
 
-	var notes=this.calender.dateToDayMap.getNotes(this.date);
+	var notes=this.calender.store.getNotes(this.date);
 	if (notes !== undefined)
 	{
 		var notesText="";

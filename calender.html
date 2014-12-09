@@ -26,14 +26,14 @@
     window.onload = function()
     {
         var store=new Store();
-        store.load();
+        store.loadFromLocalStorage();
 //        var notes=new Day();
 //        notes._noteArray.push("dads birthday dont forget!");
-//        dateToDayMap.putNotes(new Date("Nov 11,2014"),notes);
+//        store.putNotes(new Date("Nov 11,2014"),notes);
 //
 //        var notes1=new Day();
 //        notes1._noteArray.push("this is today");
-//        dateToDayMap.putNotes(new Date("Nov 14,2014"),notes1);
+//        store.putNotes(new Date("Nov 14,2014"),notes1);
 
         var calender=new Calender(store);
         calender.showDate(new Date());

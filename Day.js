@@ -86,21 +86,21 @@ Day.merge = function (day1, day2)
 			{
 				if (day1Note.time > day2Note.time)
 				{
-					day._noteArray.push(day1Note);
+					Day.addNoteIfNotDeleted(day1Note,day1, day2, day);
 				}
 				else
 				{
-					day._noteArray.push(day2Note);
+					Day.addNoteIfNotDeleted(day2Note,day1, day2, day);
 				}
 			}
 			else  //same id same time
 			{
-				day._noteArray.push(day1Note);
+				Day.addNoteIfNotDeleted(day1Note,day1, day2, day);
 			}
 		}
 		else  //id not found
 		{
-			day._noteArray.push(day1Note);
+			Day.addNoteIfNotDeleted(day1Note,day1, day2, day);
 		}
 
 	}
@@ -112,12 +112,20 @@ Day.merge = function (day1, day2)
 		var day1Note = day1.findById(day2Note.id);
 		if (day1Note===null)
 		{
-			day._noteArray.push(day2Note);
+			Day.addNoteIfNotDeleted(day2Note,day1, day2, day);
 		}
 	}
 
 
 	return day;
+}
+
+Day.addNoteIfNotDeleted=function(note,day1,day2,mergedDay)
+{
+	if (day1._deletedNotes[note.id]===undefined && day2._deletedNotes[note.id]===undefined)
+	{
+		mergedDay._noteArray.push(note);
+	}
 }
 
 Day.createTestDay = function (data)
@@ -126,10 +134,16 @@ Day.createTestDay = function (data)
 	for (var i = 0; i < data.length; i++)
 	{
 		var noteData = data[i];
-		var note = new Note(noteData[1], noteData[0]);
-		note.time = noteData[2];
+		if (noteData[1]==="*deleted*")
+		{
+			day._deletedNotes[noteData[0]] = null;
+		}
+		else
+		{
+			var note = new Note(noteData[1], noteData[0], noteData[2]);
 
-		day._noteArray.push(note);
+			day._noteArray.push(note);
+		}
 	}
 	return day;
 }

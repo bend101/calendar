@@ -5,7 +5,7 @@ function Store()
 {
 	this.theme = "themeFlower";
 	this.firstDayOfWeek = 0;
-	this.dateToDayMap={};
+	this.store={};
 	this.user="";
 }
 Store.prototype.getKey=function(date)
@@ -15,12 +15,19 @@ Store.prototype.getKey=function(date)
 
 Store.prototype.getNotes=function(date)
 {
-	return this.dateToDayMap[this.getKey(date)];
+	return this.store[this.getKey(date)];
 }
 Store.prototype.putNotes=function(date,notes)
 {
-	this.dateToDayMap[this.getKey(date)] = notes;
+	this.store[this.getKey(date)] = notes;
 
+}
+
+Store.prototype.saveToLocalStorage=function()
+{
+	var saveObj = 	this.save();
+	var saveObjAsString=JSON.stringify(saveObj);
+	localStorage.setItem(this.getSaveName(), saveObjAsString);
 }
 
 Store.prototype.save=function()
@@ -31,14 +38,11 @@ Store.prototype.save=function()
 	saveObj.Days = {};
 	saveObj.TimeStamp = (new Date()).getTime();
 
-	for (var dateKey in this.dateToDayMap)
+	for (var dateKey in this.store)
 	{
-		saveObj.Days[dateKey] = this.dateToDayMap[dateKey].save();
+		saveObj.Days[dateKey] = this.store[dateKey].save();
 	}
-
-	var saveObjAsString=JSON.stringify(saveObj);
-
-	localStorage.setItem(this.getSaveName(), saveObjAsString);
+	return saveObj;
 }
 
 Store.prototype.getSaveName=function()
@@ -56,15 +60,21 @@ Store.prototype.getSaveName=function()
 	return "notes";
 }
 
-Store.prototype.load=function()
+Store.prototype.loadFromLocalStorage=function()
 {
 	var returnedString=localStorage.getItem(this.getSaveName());
+	this.load(returnedString);
+}
 
-	console.log("json = " +returnedString);
+Store.prototype.load=function(jsonString)
+{
 
-	if (returnedString != null)
+
+	console.log("json = " +jsonString);
+
+	if (jsonString != null)
 	{
-		var loadObj = JSON.parse(returnedString);
+		var loadObj = JSON.parse(jsonString);
 		this.theme = loadObj.Theme;
 		this.firstDayOfWeek = loadObj.FirstDayOfWeek;
 
@@ -73,7 +83,7 @@ Store.prototype.load=function()
 			var loadedDay = loadObj.Days[dateKey];
 			var day = Day.load(loadedDay);
 
-			this.dateToDayMap[dateKey] = day;
+			this.store[dateKey] = day;
 		}
 	}
 }
