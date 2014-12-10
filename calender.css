@@ -153,6 +153,13 @@ body {
     margin-right: 15px;
 }
 
+.syncButton{
+    height: 28px;
+    float: right;
+    margin-top: 13px;
+    margin-right: 28px;
+}
+
 .backgroundDiv{
 
     opacity: 0.46;

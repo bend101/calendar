@@ -14,6 +14,8 @@ function HeaderView(calender)
 	this.monthNameDiv=this.headerDiv.querySelector(".calender-monthHeader");
 	this.surroundingDiv=this.headerDiv.querySelector(".calender-divSurroundingYearMonth");
 	this.menuButton=this.headerDiv.querySelector(".menuButton");
+	this.syncButton=this.headerDiv.querySelector(".syncButton");
+	this.syncButton.addEventListener("click",this.calender.onSyncClick.bind(this.calender));
 	this.divWhereDaysGo=this.headerDiv.querySelector(".calender-bottomDivOfHeader");
 	this.menuButton.addEventListener("click",this.calender.onSidebarShow.bind(this.calender));
 
@@ -91,7 +93,9 @@ HeaderView.template='<div class="calender-topDivOfHeader">'+
 		'   <div class="calender-middleDiv"></div>'+
 		'   <div class="calender-yearHeader"></div>'+
 	' </div>'+
+
 	'	<img class="menuButton" src="otherImages/menu%20button.png"></img>'+
+	'   <img class="syncButton" src="otherImages/sync icon.png"></img>'+
 
 	'</div>'+
 	''+

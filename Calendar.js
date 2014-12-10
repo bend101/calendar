@@ -220,3 +220,17 @@ Calender.prototype.onSidebarApplyClick=function()
 	this.headerView.addDaysOfTheWeek();
 }
 
+
+Calender.prototype.onSyncClick=function()
+{
+	console.log("sync clicked");
+	var serverStore=new Store();
+	serverStore.loadFromServer(function()
+	{
+		this.store.merge(serverStore);
+		this.showDate(this.firstDayOfMonth);
+		this.store.saveToServer();
+	}.bind(this));
+
+
+}
