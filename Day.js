@@ -115,6 +115,15 @@ Day.merge = function (day1, day2)
 			Day.addNoteIfNotDeleted(day2Note,day1, day2, day);
 		}
 	}
+		// copy through the deleted notes
+	for (var key in day1._deletedNotes)
+	{
+		day._deletedNotes[key]=day1._deletedNotes[key];
+	}
+	for (var key in day2._deletedNotes)
+	{
+		day._deletedNotes[key]=day2._deletedNotes[key];
+	}
 
 
 	return day;

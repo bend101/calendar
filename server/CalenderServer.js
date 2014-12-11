@@ -29,14 +29,33 @@ function onSave(req,res)
 	var fileName="calenders/"+req.query.name+".calender";
 	console.log("onSave");
 	console.log(req.body);
-	fs.writeFileSync(fileName,JSON.stringify(req.body))
+	fs.writeFileSync(fileName,JSON.stringify(req.body));
+	res.json(200, {});
+	console.log("end of save");
+
 }
 
 function onLoad(req,res)
 {
+	// Disable caching for content files
+	console.log("start of load");
+
+	res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+	res.setHeader('Content-Type', 'application/json');
+	res.header("Pragma", "no-cache");
+	res.header("Expires", 0);
 	var fileName="calenders/"+req.query.name+".calender";
 
-	var data=fs.readFileSync(fileName);
-	console.log(data.toString());
-	res.json(200, JSON.parse(data.toString()));
+	try
+	{
+		var data = fs.readFileSync(fileName);
+		console.log(data.toString());
+		res.json(200, JSON.parse(data.toString()));
+	}
+	catch (err)
+	{
+		res.json(200, {});
+	}
+	console.log("end of load");
+
 }

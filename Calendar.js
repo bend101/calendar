@@ -230,6 +230,7 @@ Calender.prototype.onSyncClick=function()
 		this.store.merge(serverStore);
 		this.showDate(this.firstDayOfMonth);
 		this.store.saveToServer();
+		this.store.saveToLocalStorage();
 	}.bind(this));
 
 
