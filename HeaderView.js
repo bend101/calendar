@@ -1,28 +1,28 @@
 /**
  * Created by Ben on 07/11/2014.
  */
-function HeaderView(calender)
+function HeaderView(calendar)
 {
-	this.calender=calender;
+	this.calendar=calendar;
 
 	this.headerDiv=document.createElement("div");
-	this.headerDiv.className="calender-headerDiv";
+	this.headerDiv.className="calendar-headerDiv";
 	this.headerDiv.innerHTML=HeaderView.template;
 	this.backArrow=this.headerDiv.querySelector(".backArrow");
 	this.forwardArrow=this.headerDiv.querySelector(".forwardArrow");
-	this.yearDiv=this.headerDiv.querySelector(".calender-yearHeader");
-	this.monthNameDiv=this.headerDiv.querySelector(".calender-monthHeader");
-	this.surroundingDiv=this.headerDiv.querySelector(".calender-divSurroundingYearMonth");
+	this.yearDiv=this.headerDiv.querySelector(".calendar-yearHeader");
+	this.monthNameDiv=this.headerDiv.querySelector(".calendar-monthHeader");
+	this.surroundingDiv=this.headerDiv.querySelector(".calendar-divSurroundingYearMonth");
 	this.menuButton=this.headerDiv.querySelector(".menuButton");
 	this.syncButton=this.headerDiv.querySelector(".syncButton");
-	this.syncButton.addEventListener("click",this.calender.onSyncClick.bind(this.calender));
-	this.divWhereDaysGo=this.headerDiv.querySelector(".calender-bottomDivOfHeader");
-	this.menuButton.addEventListener("click",this.calender.onSidebarShow.bind(this.calender));
+	this.syncButton.addEventListener("click",this.calendar.onSyncClick.bind(this.calendar));
+	this.divWhereDaysGo=this.headerDiv.querySelector(".calendar-bottomDivOfHeader");
+	this.menuButton.addEventListener("click",this.calendar.onSidebarShow.bind(this.calendar));
 
-	this.forwardArrow.addEventListener("click",this.calender.onClickRight.bind(this.calender));
-	this.backArrow.addEventListener("click",this.calender.onClickLeft.bind(this.calender));
-	this.forwardArrow.addEventListener("touchstart",this.calender.onClickRight.bind(this.calender));
-	this.backArrow.addEventListener("touchstart",this.calender.onClickLeft.bind(this.calender));
+	this.forwardArrow.addEventListener("click",this.calendar.onClickRight.bind(this.calendar));
+	this.backArrow.addEventListener("click",this.calendar.onClickLeft.bind(this.calendar));
+	this.forwardArrow.addEventListener("touchstart",this.calendar.onClickRight.bind(this.calendar));
+	this.backArrow.addEventListener("touchstart",this.calendar.onClickLeft.bind(this.calendar));
 
 	this.backArrow.style.cursor="pointer";
 	this.forwardArrow.style.cursor="pointer";
@@ -45,16 +45,16 @@ HeaderView.monthNames = [ "January", "February", "March", "April", "May", "June"
 
 HeaderView.prototype.updateMonth=function(monthIndex, year)
 {
-	if (monthIndex!==this.currentMonth || this.calender.theme!==this.theme)
+	if (monthIndex!==this.currentMonth || this.calendar.theme!==this.theme)
 	{
-		if (this.calender.theme==="themeMountain")
+		if (this.calendar.theme==="themeMountain")
 		{
 			this.yearDiv.innerHTML = "";
 			this.monthNameDiv.innerHTML = "";
 			this.monthNameDiv.innerHTML=HeaderView.monthNames[monthIndex];
 			this.yearDiv.innerHTML=year+1900;
 		}
-		if (this.calender.theme==="themeFlower")
+		if (this.calendar.theme==="themeFlower")
 		{
 			this.yearDiv.innerHTML = "";
 			this.monthNameDiv.innerHTML = "";
@@ -65,14 +65,14 @@ HeaderView.prototype.updateMonth=function(monthIndex, year)
 			for (var j = 0; j < this.month.length; j++)
 			{
 				this.monthName = document.createElement("img");
-				this.monthName.className = "calender-monthNameImg";
+				this.monthName.className = "calendar-monthNameImg";
 				this.monthName.src = "images/" + this.month[j] + ".png";
 				this.monthNameDiv.appendChild(this.monthName);
 			}
 			for (var i = 0; i < year2.length; i++)
 			{
 				this.flowerNumber = document.createElement("img");
-				this.flowerNumber.className = "calender-flowerNumber";
+				this.flowerNumber.className = "calendar-flowerNumber";
 				this.flowerNumber.src = "images/" + year2[i] + ".png";
 				this.yearDiv.appendChild(this.flowerNumber);
 			}
@@ -80,18 +80,18 @@ HeaderView.prototype.updateMonth=function(monthIndex, year)
 		}
 
 		this.currentMonth=monthIndex;
-		this.theme=this.calender.theme;
+		this.theme=this.calendar.theme;
 	}
 
 }
 
-HeaderView.template='<div class="calender-topDivOfHeader">'+
+HeaderView.template='<div class="calendar-topDivOfHeader">'+
 	'	<img class="backArrow" src="otherImages/back%20arrow.png"></img>'+
 	'	<img class="forwardArrow" src="otherImages/forward%20arrow.png"></img>'+
-	' <div class="calender-divSurroundingYearMonth">'+
-		'   <div class="calender-monthHeader"></div>'+
-		'   <div class="calender-middleDiv"></div>'+
-		'   <div class="calender-yearHeader"></div>'+
+	' <div class="calendar-divSurroundingYearMonth">'+
+		'   <div class="calendar-monthHeader"></div>'+
+		'   <div class="calendar-middleDiv"></div>'+
+		'   <div class="calendar-yearHeader"></div>'+
 	' </div>'+
 
 	'	<img class="menuButton" src="otherImages/menu%20button.png"></img>'+
@@ -99,7 +99,7 @@ HeaderView.template='<div class="calender-topDivOfHeader">'+
 
 	'</div>'+
 	''+
-	'<div class="calender-bottomDivOfHeader">'+
+	'<div class="calendar-bottomDivOfHeader">'+
 
 	'</div>';
 
@@ -110,7 +110,7 @@ HeaderView.prototype.addDaysOfTheWeek=function()
 	for (var i=0;i<7;i++)
 	{
 		var dayNameDiv=document.createElement("div");
-		dayNameDiv.className="calender-dayName";
+		dayNameDiv.className="calendar-dayName";
 		dayNameDiv.innerHTML=this.daysArray[day];
 		this.divWhereDaysGo.appendChild(dayNameDiv);
 		if (day<6)

@@ -24,7 +24,7 @@ body {
     overflow: hidden;
     }
 
-.calender-day-inside{
+.calendar-day-inside{
     width: 100%;
     height: 100%;
     border: 1px outset #BBB;
@@ -43,7 +43,7 @@ body {
 }
 
 
-.calender-dayReceiveClick{
+.calendar-dayReceiveClick{
     height: 100%;
     right: 15px;
     margin: 1px;
@@ -53,7 +53,7 @@ body {
     position: absolute;
 }
 
- .calender-noSelect{
+ .calendar-noSelect{
      -webkit-touch-callout: none;
      -webkit-user-select: none;
      -khtml-user-select: none;
@@ -62,10 +62,10 @@ body {
      user-select: none;
  }
 
-.calender-day-inside p{
+.calendar-day-inside p{
     margin: 0px;
 }
-.calender-day-outside{
+.calendar-day-outside{
     width: 14.28%;
     height: 16%;
     float: left;
@@ -74,7 +74,7 @@ body {
     position: relative;
 }
 
-.calender-dayName{
+.calendar-dayName{
     width: 14%;
     height: 100%;
     float: left;
@@ -87,17 +87,17 @@ body {
 }
 
 
-.calender-nextline{
+.calendar-nextline{
     clear: left;
 }
 
-.calender-textGrey{
+.calendar-textGrey{
     color: grey;
     background-color: #EFEFEF;
     opacity: 0.8;
 }
 
-.calender-daysContainer{
+.calendar-daysContainer{
     position: absolute;
     width: 100%;
     top: 80px;
@@ -108,7 +108,7 @@ body {
     box-sizing: border-box;
 }
 
-.calender-headerDiv{
+.calendar-headerDiv{
     position: absolute;
     width: 100%;
     height: 80px;
@@ -119,12 +119,12 @@ body {
     box-sizing: border-box;
 }
 
-.calender-topDivOfHeader{
+.calendar-topDivOfHeader{
     height:50px;
     text-align: center;
 }
 
-.calender-bottomDivOfHeader{
+.calendar-bottomDivOfHeader{
     height:30px;
 }
 
@@ -132,7 +132,7 @@ body {
     /*width:1253px;*/
 /*}*/
 
-.calender-monthName{
+.calendar-monthName{
     font-size: 220%;
     text-shadow: 1px 1px #FFF;
 }
@@ -210,7 +210,7 @@ body {
     margin-left: 16px;
 }
 
-/*.calender-modalDiv{*/
+/*.calendar-modalDiv{*/
     /*width: 100%;*/
     /*height: 100%;*/
     /*visibility: hidden;*/

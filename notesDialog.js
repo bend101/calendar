@@ -32,6 +32,7 @@ function NotesDialog(title, width, height, closeListener, notes)
 }
 
 NotesDialog.prototype=Object.create(Dialog.prototype);
+NotesDialog.prototype.constructor=NotesDialog;
 
 NotesDialog.prototype.onSelectionChange=function(listBox,index)
 {

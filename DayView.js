@@ -1,24 +1,24 @@
 /**
  * Created by Ben on 04/11/2014.
  */
-function DayView(calender,dayOfWeek)
+function DayView(calendar,dayOfWeek)
 {
 	this.date=new Date();
-	this.calender=calender;
+	this.calendar=calendar;
 	this.outsideDiv=document.createElement("div");
-	this.outsideDiv.className="calender-day-outside";
+	this.outsideDiv.className="calendar-day-outside";
 	this.dayDiv=document.createElement("div");
 
 	this.smallDiv=document.createElement("div");
 	this.smallDiv.className="smallDiv";
 
-	this.calender.daysContainerDiv.appendChild(this.outsideDiv);
-	this.dayDiv.className="calender-day-inside";
+	this.calendar.daysContainerDiv.appendChild(this.outsideDiv);
+	this.dayDiv.className="calendar-day-inside";
 	this.outsideDiv.appendChild(this.dayDiv);
 
 	this.dayDiv.appendChild(this.smallDiv);
 	this.dayReceiveClick=document.createElement("div");
-	this.dayReceiveClick.className="calender-dayReceiveClick";
+	this.dayReceiveClick.className="calendar-dayReceiveClick";
 	this.outsideDiv.appendChild(this.dayReceiveClick);
 	this.dayReceiveClick.addEventListener("click",this.onClick.bind(this));
 	this.dayReceiveClick.addEventListener("dblclick",this.onDblClick.bind(this));
@@ -71,13 +71,13 @@ DayView.prototype.compareDates=function(date1,date2)
 
 DayView.prototype.onClick=function()
 {
-	this.calender.showDate(this.date);
+	this.calendar.showDate(this.date);
 	console.log(this.date);
 }
 
 DayView.prototype.onDblClick=function()
 {
-	var notes=this.calender.store.getNotes(this.date);
+	var notes=this.calendar.store.getNotes(this.date);
 	console.log(notes);
 	if (notes===undefined)
 	{
@@ -91,10 +91,10 @@ DayView.prototype.onNotesDone = function(dialog, dialogResult)
 {
 	if (dialogResult == Dialog.OK)
 	{
-		this.calender.store.putNotes(this.date, dialog.getNotes());
-		console.log("---->", dialog.getNotes(), this.calender.store.getNotes(this.date));
+		this.calendar.store.putNotes(this.date, dialog.getNotes());
+		console.log("---->", dialog.getNotes(), this.calendar.store.getNotes(this.date));
 		this.render();
-		this.calender.store.saveToLocalStorage();
+		this.calendar.store.saveToLocalStorage();
 	}
 }
 
@@ -107,13 +107,13 @@ DayView.prototype.render=function()
 		this.notesContainer = null;
 	}
 
-	var notes=this.calender.store.getNotes(this.date);
+	var notes=this.calendar.store.getNotes(this.date);
 	if (notes !== undefined)
 	{
 		var notesText="";
 		for (var j=0;j<notes.length();j++)
 		{
-			notesText=notesText+"<p class='calender-noSelect'>"+notes.getNoteText(j)+"</p>";
+			notesText=notesText+"<p class='calendar-noSelect'>"+notes.getNoteText(j)+"</p>";
 		}
 
 		this.notesContainer=document.createElement("div");
@@ -123,19 +123,19 @@ DayView.prototype.render=function()
 		this.dayDiv.appendChild(this.notesContainer);
 	}
 	this.smallDiv.innerHTML= this.date.getDate();
-	if (this.calender.firstDayOfMonth.getMonth()!==this.date.getMonth())
+	if (this.calendar.firstDayOfMonth.getMonth()!==this.date.getMonth())
 	{
-		this.dayDiv.className = "calender-day-inside calender-textGrey";
+		this.dayDiv.className = "calendar-day-inside calendar-textGrey";
 	}
 	else
 	{
-		this.dayDiv.className = "calender-day-inside";
+		this.dayDiv.className = "calendar-day-inside";
 	}
 	if (this.date.getDay()===0)
 	{
-		this.dayDiv.className = this.dayDiv.className + " calender-nextline";
+		this.dayDiv.className = this.dayDiv.className + " calendar-nextline";
 	}
-	if (this.compareDates(this.date,this.calender.selectedDate)===true)
+	if (this.compareDates(this.date,this.calendar.selectedDate)===true)
 	{
 		this.dayDiv.className = this.dayDiv.className + " selectedDiv";
 	}

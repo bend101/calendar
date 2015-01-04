@@ -1,7 +1,7 @@
 /**
  * Created by Ben on 04/11/2014.
  */
-function Calender(store)
+function Calendar(store)
 {
 	this.firstDayOfMonth = null;
 	this.dayArray = [];
@@ -24,11 +24,11 @@ function Calender(store)
 	this.sidebar=new SideBar(this);
 	this.containingDiv.appendChild(this.sidebar.getElement());
 //	this.modalDiv=document.createElement("div");
-//	this.modalDiv.className="calender-modalDiv";
+//	this.modalDiv.className="calendar-modalDiv";
 //	this.foregroundDiv.appendChild(this.modalDiv);
 
 	this.daysContainerDiv = document.createElement("div");
-	this.daysContainerDiv.className = "calender-daysContainer";
+	this.daysContainerDiv.className = "calendar-daysContainer";
 
 	this.headerView = new HeaderView(this);
 
@@ -61,7 +61,7 @@ function Calender(store)
 
 // set the calendar to show the month of the given date
 // so for example given 11/11/2014 show november 2014
-Calender.prototype.showDate = function(showDate)
+Calendar.prototype.showDate = function(showDate)
 {
 	this.selectedDate= new Date(showDate.getTime());
 	// get the month from date
@@ -89,17 +89,17 @@ Calender.prototype.showDate = function(showDate)
 	this.headerView.updateMonth(this.firstDayOfMonth.getMonth(), this.firstDayOfMonth.getYear());
 }
 
-Calender.prototype.toString = function()
+Calendar.prototype.toString = function()
 {
 	return this.firstDayOfMonth + ": " + this.dayArray.toString();
 };
 
-Calender.prototype.getElement=function()
+Calendar.prototype.getElement=function()
 {
 	return this.containingDiv;
 }
 
-Calender.prototype.onClickRight=function(event)
+Calendar.prototype.onClickRight=function(event)
 {
 	event.preventDefault();
 	var nextMonth=new Date(this.firstDayOfMonth.getTime());
@@ -107,7 +107,7 @@ Calender.prototype.onClickRight=function(event)
 	this.showDate(nextMonth);
 }
 
-Calender.prototype.onClickLeft=function(event)
+Calendar.prototype.onClickLeft=function(event)
 {
 	event.preventDefault();
 	var nextMonth=new Date(this.firstDayOfMonth.getTime());
@@ -115,7 +115,7 @@ Calender.prototype.onClickLeft=function(event)
 	this.showDate(nextMonth);
 }
 
-Calender.prototype.onMouseMove=function(event)
+Calendar.prototype.onMouseMove=function(event)
 {
 	if (this.rightShowing===false)
 	{
@@ -154,7 +154,7 @@ Calender.prototype.onMouseMove=function(event)
 	}
 }
 
-Calender.prototype.createLeftButton=function()
+Calendar.prototype.createLeftButton=function()
 {
 	this.leftButton=document.createElement("div");
 	this.leftButton.className="leftButton";
@@ -164,7 +164,7 @@ Calender.prototype.createLeftButton=function()
 	this.foregroundDiv.appendChild(this.leftButton);
 }
 
-Calender.prototype.createRightButton=function()
+Calendar.prototype.createRightButton=function()
 {
 	this.rightButton=document.createElement("div");
 	this.rightButton.className="rightButton";
@@ -174,7 +174,7 @@ Calender.prototype.createRightButton=function()
 	this.foregroundDiv.appendChild(this.rightButton);
 }
 
-Calender.prototype.onKeyDown=function(event)
+Calendar.prototype.onKeyDown=function(event)
 {
 	console.log(event);
 	this.handleArrowKeys(event,-7,38);
@@ -183,7 +183,7 @@ Calender.prototype.onKeyDown=function(event)
 	this.handleArrowKeys(event,1,39);
 }
 
-Calender.prototype.handleArrowKeys=function(event,number,keyPressed)
+Calendar.prototype.handleArrowKeys=function(event,number,keyPressed)
 {
 	if (event.keyCode===keyPressed)
 	{
@@ -193,12 +193,12 @@ Calender.prototype.handleArrowKeys=function(event,number,keyPressed)
 	}
 }
 
-Calender.prototype.onSidebarShow=function()
+Calendar.prototype.onSidebarShow=function()
 {
 	this.sidebar.getElement().style.right="0px";
 }
 
-Calender.prototype.onSidebarApplyClick=function()
+Calendar.prototype.onSidebarApplyClick=function()
 {
 	console.log(this.sidebar.getSelectedDay());
 	this.firstDayOfWeek=parseInt(this.sidebar.getSelectedDay());
@@ -221,7 +221,7 @@ Calender.prototype.onSidebarApplyClick=function()
 }
 
 
-Calender.prototype.onSyncClick=function()
+Calendar.prototype.onSyncClick=function()
 {
 	console.log("sync clicked");
 	var serverStore=new Store();

@@ -11,17 +11,17 @@
     margin-top: 19px;
 }
 
-.calender-yearHeader{
+.calendar-yearHeader{
     display: inline-block;
     font-size: 220%;
     text-shadow: 1px 1px #FFF;
 }
-.calender-monthHeader{
+.calendar-monthHeader{
     display: inline-block;
     font-size: 220%;
     text-shadow: 1px 1px #FFF;
 }
-.calender-middleDiv{
+.calendar-middleDiv{
     display: inline-block;
     min-height: 1px;
     width: 5px;
@@ -51,7 +51,7 @@
     -webkit-transition: right 0.5s linear;
     transition: right 0.5s linear;
 }
-.calender-divSurroundingYearMonth{
+.calendar-divSurroundingYearMonth{
     padding-top: 5px;
     display: inline-block;
 }

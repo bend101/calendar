@@ -2,9 +2,9 @@
  * Created by Ben on 27/11/2014.
  */
 
-function SideBar (calender)
+function SideBar (calendar)
 {
-	this.calender=calender;
+	this.calendar=calendar;
 	var container=document.createElement("div");
 
 	this.themesArray=[ {name:"themeMountain",image:"otherImages/themeImageOfMountain.png"},{name:"themeFlower",image:"otherImages/themeImageOfFlowers.png"} ];
@@ -41,7 +41,7 @@ this.containingElement=container.querySelector(".sidebar-container");
 	this.applyButton = container.querySelector(".sidebar-applybutton");
 	this.dropDownBox = container.querySelector(".dropDownBox");
 	this.listOfThemes.appendChild(this.listBox.getElement());
-	this.applyButton.addEventListener("click",this.calender.onSidebarApplyClick.bind(this.calender));
+	this.applyButton.addEventListener("click",this.calendar.onSidebarApplyClick.bind(this.calendar));
 }
 
 SideBar.prototype.listRenderer=function(rowDiv,index)

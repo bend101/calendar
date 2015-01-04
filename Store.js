@@ -68,7 +68,7 @@ Store.prototype.loadFromLocalStorage=function()
 
 Store.prototype.loadFromServer=function(fnLoaded)
 {
-	var url="http://192.168.0.13:3000/calenderLoad?name=" + this.getSaveName();
+	var url="http://192.168.0.13:3000/calendarLoad?name=" + this.getSaveName();
 
 	var request = new XMLHttpRequest();
 	request.open('GET', url, true);
@@ -87,7 +87,7 @@ Store.prototype.loadFromServer=function(fnLoaded)
 
 Store.prototype.saveToServer=function()
 {
-	var url="http://192.168.0.13:3000/calenderSave?name=" + this.getSaveName();
+	var url="http://192.168.0.13:3000/calendarSave?name=" + this.getSaveName();
 
 	var request = new XMLHttpRequest();
 	request.open('POST', url, true);

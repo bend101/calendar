@@ -18,30 +18,30 @@
 }
 
 
-.calender-yearHeader{
+.calendar-yearHeader{
     display: inline-block;
 }
-.calender-monthHeader{
+.calendar-monthHeader{
     display: inline-block;
 }
 
 
-.calender-middleDiv{
+.calendar-middleDiv{
     display: inline-block;
     min-height: 1px;
     width: 20px;
 }
 
 
-.calender-flowerNumber{
+.calendar-flowerNumber{
     height:42px;
 }
 
-.calender-monthNameImg{
+.calendar-monthNameImg{
     height:42px;
 }
 
-.calender-divSurroundingYearMonth{
+.calendar-divSurroundingYearMonth{
     padding-top: 5px;
     display: inline-block;
 }
