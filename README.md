@@ -11,7 +11,7 @@ day of the week.
 * saves to local storage your notes and can be synced to server (when available).
 * uses touch events however this is only partially complete.
 
-[Click here to try](https://cdn.rawgit.com/bend101/calendar/master/calendar.html)
+[Click here to try](https://cdn.rawgit.com/bend101/calendar/NewTheme/calendar.html)
 
 
 
